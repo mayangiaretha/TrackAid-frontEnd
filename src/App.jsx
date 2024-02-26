@@ -1,22 +1,14 @@
+import { Provider } from 'react-redux';
 
-import { Provider } from "react-redux";
-import store from "./redux/combined store";
-import Registration from "./features/registration/registration";
-import Login from "./features/login/login";
+import Registration from './features/registration/registration';
+import store from './redux/combined store';
 
-  function App() {
-    return (
+function App() {
+  return (
+    <Provider store={store}>
+      <Registration />
+    </Provider>
+  );
+}
 
-        <Provider store={store}>
-          <Registration />
-
-  </Provider>
-
-    );
-  }
-
-  export default App;
-
-
-
-
+export default App;
