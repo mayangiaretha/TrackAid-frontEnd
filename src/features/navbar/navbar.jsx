@@ -1,5 +1,5 @@
-
 import "./navbar.css"
+import Button from "../../elements/button/button";
 
 const Navbar = () => {
     return (
@@ -8,8 +8,8 @@ const Navbar = () => {
                 <span className="logo">covene</span>
             </div>
             <div className="right-corner">
-                <button className="login-btn">Login</button>
-                <button className="signin-btn">Sign In</button>
+                <Button name="Login"/>
+                <Button name="Sign In"/>
             </div>
         </div>
     );
