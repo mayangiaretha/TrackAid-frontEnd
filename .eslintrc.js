@@ -90,6 +90,7 @@ module.exports = {
         '@typescript-eslint/no-unsafe-call': 'off',
 
         'import/no-extraneous-dependencies': 'off',
+        'import/order': 'off',
       },
     },
     {
