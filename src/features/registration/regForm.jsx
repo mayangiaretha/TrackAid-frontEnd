@@ -1,6 +1,8 @@
 import { Form } from 'formik';
-import './regForm.css';
 
+import './regForm.css';
+import Button from "../../../elements/button/button";
+import Textfield from "../../../elements/textfield/textfield";
 const RegForm = ({ formik }) => {
   const { handleSubmit, handleChange, values, touched, errors } = formik;
 
@@ -10,7 +12,7 @@ const RegForm = ({ formik }) => {
         <h1>sign in</h1>
         <div className="form-group">
           <label htmlFor="username">username</label>
-          <input
+          <Textfield
             type="text"
             id="username"
             name="username"
@@ -24,7 +26,7 @@ const RegForm = ({ formik }) => {
         </div>
         <div className="form-group">
           <label htmlFor="email">Email</label>
-          <input
+          <Textfield
             type="email"
             id="email"
             name="email"
@@ -38,7 +40,7 @@ const RegForm = ({ formik }) => {
         </div>
         <div className="form-group">
           <label htmlFor="password">Password</label>
-          <input
+          <Textfield
             type="password"
             id="password"
             name="password"
@@ -51,9 +53,7 @@ const RegForm = ({ formik }) => {
           )}
         </div>
         <div className="button-group">
-          <button className="submit-button" type="submit">
-            Submit
-          </button>
+          <Button name="submit" />
         </div>
       </Form>
     </div>
