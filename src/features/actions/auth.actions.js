@@ -26,6 +26,7 @@ export const loginUser = (loginData) => (dispatch) => {
 };
 
 export const registerUser = (registrationData) => async (dispatch) => {
+
   try {
     const res = await instance.post('users/register', registrationData);
 

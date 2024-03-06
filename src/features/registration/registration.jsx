@@ -21,25 +21,27 @@ const Registration = () => {
   }, [authState]);
 
   const defaultValues = {
-    username: '',
+    username:'',
     email: '',
     password: '',
   };
 
   const yupObject = Yup.object({
-    username: Yup.string().required(),
     email: Yup.string().email().required(),
     password: Yup.string().required(),
   });
 
   const handleSubmit = (values) => {
-    const { email, password, username } = values;
+    const { email, password,username} = values;
 
     const registrationData = {
       email,
       password,
       username,
+
     };
+
+
 
     dispatch(registerUser(registrationData));
   };
