@@ -1,8 +1,8 @@
 import { Form } from 'formik';
 
-import './regForm.css';
-import Button from "../../../elements/button/button";
-import Textfield from "../../../elements/textfield/textfield";
+
+import Button from "../../elements/button/button";
+import Textfield from "../../elements/textfield/textfield";
 const RegForm = ({ formik }) => {
   const { handleSubmit, handleChange, values, touched, errors } = formik;
 

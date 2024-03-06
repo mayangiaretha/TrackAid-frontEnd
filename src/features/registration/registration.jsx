@@ -4,7 +4,9 @@ import { Formik } from 'formik';
 import { useSelector, useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 
-import RegForm from './regForm/regForm';
+import "./regForm.css"
+import './registration.css'
+import RegForm from "./regForm";
 import { registerUser } from '../actions/auth.actions';
 
 const Registration = () => {
