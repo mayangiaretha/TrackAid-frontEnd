@@ -2,21 +2,26 @@ import { useState, useEffect } from 'react';
 
 import { Formik } from 'formik';
 import { useSelector, useDispatch } from 'react-redux';
+import {useNavigate} from "react-router-dom";
 import * as Yup from 'yup';
 
-import "./regForm.css"
+import "../../components/RegstrationForm/RegistrationForm.css"
 import './registration.css'
-import RegForm from "./regForm";
+import RegistrationForm from "../../components/RegstrationForm/RegistrationForm";
 import { registerUser } from '../actions/auth.actions';
 
 const Registration = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const authState = useSelector((state) => state?.authentication);
   const [error, setError] = useState('');
 
   useEffect(() => {
     if (authState.error) {
       setError(authState.error);
+    }
+    if(authState.isAuthenticated){
+      navigate('/')
     }
   }, [authState]);
 
@@ -40,9 +45,6 @@ const Registration = () => {
       username,
 
     };
-
-
-
     dispatch(registerUser(registrationData));
   };
 
@@ -55,7 +57,7 @@ const Registration = () => {
           validationSchema={yupObject}
           onSubmit={handleSubmit}
         >
-          {(formik) => <RegForm formik={formik} />}
+          {(formik) => <RegistrationForm formik={formik} />}
         </Formik>
       </div>
     </div>
