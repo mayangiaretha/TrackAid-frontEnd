@@ -1,5 +1,3 @@
-
-
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -17,9 +15,9 @@ const Navbar = () => {
       </div>
       <div className="right-corner">
         {authState.isAuthenticated ? (
-            <div className="avatar">
-          <div className='avatar-name'>{authState.currentUser.username}</div>
-            </div>
+          <div className="avatar">
+            <div className="avatar-name">{authState.currentUser.username}</div>
+          </div>
         ) : (
           <>
             {' '}

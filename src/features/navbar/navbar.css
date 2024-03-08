@@ -1,58 +1,57 @@
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #3a4661;
-    color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #3a4661;
+  color: #fff;
 }
 
 .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: coral;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: coral;
 }
 
 .right-corner {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
 }
 
 .login-btn,
 .signin-btn {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    background-color: #007bff;
-    color: #fff;
-    cursor: pointer;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
 }
 
 .login-btn:hover,
 .signin-btn:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
-.circle{
-    clip-path: circle(50px);
+.circle {
+  clip-path: circle(50px);
 }
 .avatar-name {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    background-color: coral;
-    color:white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: coral;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
 }
 
 .right-corner {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .right-corner > * {
-    margin-right: 10px;
+  margin-right: 10px;
 }
-

@@ -1,29 +1,32 @@
 import { Form } from 'formik';
 
-
-import Button from "../../elements/button/button";
-import Textfield from "../../elements/textfield/textfield";
-const RegistrationForm = ({ formik }) => {
+import Button from '../../elements/button/button';
+import Textfield from '../../elements/textfield/textfield';
+const RegistrationForm = ({ formik, login }) => {
   const { handleSubmit, handleChange, values, touched, errors } = formik;
 
+  // if
   return (
     <div className="container">
       <Form className="form" onSubmit={handleSubmit}>
-        <h1>sign in</h1>
-        <div className="form-group">
-          <label htmlFor="username">username</label>
-          <Textfield
-            type="text"
-            id="username"
-            name="username"
-            placeholder="Enter username"
-            value={values.username}
-            onChange={handleChange}
-          />
-          {touched.username && errors.username && (
-            <div className="error">{errors.username}</div>
-          )}
-        </div>
+        <h1>{login ? 'Sign in' : 'Create an account'}</h1>
+        {!login && (
+          <div className="form-group">
+            <label htmlFor="username">username</label>
+            <Textfield
+              type="text"
+              id="username"
+              name="username"
+              placeholder="Enter username"
+              value={values.username}
+              onChange={handleChange}
+            />
+            {touched.username && errors.username && (
+              <div className="error">{errors.username}</div>
+            )}
+          </div>
+        )}
+
         <div className="form-group">
           <label htmlFor="email">Email</label>
           <Textfield
