@@ -3,7 +3,7 @@ import { Form } from 'formik';
 
 import Button from "../../elements/button/button";
 import Textfield from "../../elements/textfield/textfield";
-const RegForm = ({ formik }) => {
+const RegistrationForm = ({ formik }) => {
   const { handleSubmit, handleChange, values, touched, errors } = formik;
 
   return (
@@ -60,4 +60,4 @@ const RegForm = ({ formik }) => {
   );
 };
 
-export default RegForm;
+export default RegistrationForm;

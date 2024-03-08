@@ -1,7 +1,7 @@
 
 
-import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import './navbar.css';
 import Button from '../../elements/button/button';

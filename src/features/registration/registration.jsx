@@ -5,9 +5,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import {useNavigate} from "react-router-dom";
 import * as Yup from 'yup';
 
-import "./regForm.css"
+import "../../components/RegstrationForm/RegistrationForm.css"
 import './registration.css'
-import RegForm from "./regForm";
+import RegistrationForm from "../../components/RegstrationForm/RegistrationForm";
 import { registerUser } from '../actions/auth.actions';
 
 const Registration = () => {
@@ -57,7 +57,7 @@ const Registration = () => {
           validationSchema={yupObject}
           onSubmit={handleSubmit}
         >
-          {(formik) => <RegForm formik={formik} />}
+          {(formik) => <RegistrationForm formik={formik} />}
         </Formik>
       </div>
     </div>
