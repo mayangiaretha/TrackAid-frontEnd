@@ -1,6 +1,5 @@
-
 .questions {
-    background-color: antiquewhite;
-    height: calc(100vh - 53px);
-    width: calc(100vw - 200px);
+  background-color: antiquewhite;
+  height: calc(100vh - 53px);
+  width: calc(100vw - 200px);
 }

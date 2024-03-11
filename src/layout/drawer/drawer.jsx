@@ -1,7 +1,7 @@
 import './drawer.css';
 const Drawer = ({ children }) => {
   return (
-      <div className="flex-container">
+    <div className="flex-container">
       <div className="sidebar">
         <ul>
           <li>
@@ -26,11 +26,7 @@ const Drawer = ({ children }) => {
           </li>
         </ul>
       </div>
-      <div>
-        {children}
-      </div>
-
-
+      <div>{children}</div>
     </div>
   );
 };

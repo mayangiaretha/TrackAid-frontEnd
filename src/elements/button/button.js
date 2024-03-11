@@ -1,5 +1,5 @@
-import "./button.css"
+import './button.css';
 
-const Button = ({name}) => (<button className="btn">{name}</button>)
+const Button = ({ name }) => <button className="btn">{name}</button>;
 
-export default Button
+export default Button;
