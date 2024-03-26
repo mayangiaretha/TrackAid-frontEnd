@@ -1,3 +1,3 @@
-import { StyledButton } from './Button.styles.js';
+import { StyledButton} from "./button.styles";
 
 export const Button = StyledButton;

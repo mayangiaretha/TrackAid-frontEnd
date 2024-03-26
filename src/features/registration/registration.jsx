@@ -1,13 +1,12 @@
 import { useState, useEffect } from 'react';
 
+import { Alert } from '@mui/material';
 import { Formik } from 'formik';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
-import { Alert } from '@mui/material';
 
 import { StyledContainer, StyledFormContainer } from './registration.style';
-
 import RegistrationForm from '../../components/RegstrationForm/RegistrationForm';
 import { registerUser } from '../actions/auth.actions';
 

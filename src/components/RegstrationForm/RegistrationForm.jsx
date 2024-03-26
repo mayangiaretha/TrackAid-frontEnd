@@ -1,7 +1,8 @@
-import { Form } from 'formik';
-import { TextField} from "../../elements/textfield";
-import { StyledButton } from './RegistrationForm.styles';
 import { Container, Grid, Stack } from '@mui/material';
+import { Form } from 'formik';
+
+import { StyledButton } from './RegistrationForm.styles';
+import { TextField} from "../../elements/textfield";
 
 const RegistrationForm = ({ formik, login }) => {
   const { handleSubmit, handleChange, values, touched, errors } = formik;
@@ -19,7 +20,7 @@ const RegistrationForm = ({ formik, login }) => {
         </h1>
         {!login && (
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12}>
               <TextField
                 placeholder="Enter First Name"
                 name="firstname"
