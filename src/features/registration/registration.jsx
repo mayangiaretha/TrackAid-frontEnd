@@ -4,9 +4,10 @@ import { Formik } from 'formik';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
+import { Alert } from '@mui/material';
 
-import '../../components/RegstrationForm/RegistrationForm.css';
-import './registration.css';
+import { StyledContainer, StyledFormContainer } from './registration.style';
+
 import RegistrationForm from '../../components/RegstrationForm/RegistrationForm';
 import { registerUser } from '../actions/auth.actions';
 
@@ -49,18 +50,20 @@ const Registration = () => {
   };
 
   return (
-    <div className="container">
-      {error.length > 0 && <div className="error">{error}</div>}
-      <div className="form-container">
+    <StyledContainer maxWidth="1200px">
+      {error.length > 0 && (
+        <Alert severity="error">This is an error Alert.</Alert>
+      )}
+      <StyledFormContainer>
         <Formik
           initialValues={defaultValues}
           validationSchema={yupObject}
           onSubmit={handleSubmit}
         >
-          {(formik) => <RegistrationForm formik={formik} login={false}/>}
+          {(formik) => <RegistrationForm formik={formik} login={false} />}
         </Formik>
-      </div>
-    </div>
+      </StyledFormContainer>
+    </StyledContainer>
   );
 };
 

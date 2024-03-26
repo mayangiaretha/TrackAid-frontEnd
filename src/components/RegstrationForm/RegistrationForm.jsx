@@ -1,65 +1,84 @@
 import { Form } from 'formik';
+import { TextField} from "../../elements/textfield";
+import { StyledButton } from './RegistrationForm.styles';
+import { Container, Grid, Stack } from '@mui/material';
 
-import Button from '../../elements/button/button';
-import Textfield from '../../elements/textfield/textfield';
 const RegistrationForm = ({ formik, login }) => {
   const { handleSubmit, handleChange, values, touched, errors } = formik;
-
-  // if
   return (
-    <div className="container">
-      <Form className="form" onSubmit={handleSubmit}>
-        <h1>{login ? 'Sign in' : 'Create an account'}</h1>
+    <Container component="main">
+      <Form sx={{ mt: 3 }} onSubmit={handleSubmit}>
+        <h1
+          style={{
+            margin: 'auto',
+            display: 'flex',
+            justifyContent: 'center',
+          }}
+        >
+          {login ? 'Sign in' : 'Create an account'}
+        </h1>
         {!login && (
-          <div className="form-group">
-            <label htmlFor="username">username</label>
-            <Textfield
-              type="text"
-              id="username"
-              name="username"
-              placeholder="Enter username"
-              value={values.username}
-              onChange={handleChange}
-            />
-            {touched.username && errors.username && (
-              <div className="error">{errors.username}</div>
-            )}
-          </div>
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                placeholder="Enter First Name"
+                name="firstname"
+                fullWidth
+                id="firstname"
+                value={values.username}
+                onChange={handleChange}
+                error={touched.username && Boolean(errors.username)}
+                helperText={touched.username && errors.username}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                id="email"
+                name="email"
+                autoComplete="email"
+                placeholder="Enter Email"
+                value={values.email}
+                onChange={handleChange}
+                error={touched.email && Boolean(errors.email)}
+                helperText={touched.email && errors.email}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                name="password"
+                type="password"
+                id="password"
+                placeholder="Enter Password"
+                autoComplete="new-password"
+                onChange={handleChange}
+                error={touched.password && Boolean(errors.password)}
+                helperText={touched.password && errors.password}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <Stack
+                direction={'row'}
+                gap={5}
+                justifyContent={'center'}
+                alignContent={'center'}
+                mt={8}
+                mx={4}
+              >
+                <StyledButton variant="contained" fullWidth>
+                  Back
+                </StyledButton>
+                <StyledButton type="submit" variant="contained" fullWidth>
+                  {' '}
+                  Submit{' '}
+                </StyledButton>
+              </Stack>
+            </Grid>
+          </Grid>
         )}
-
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <Textfield
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Enter Email"
-            value={values.email}
-            onChange={handleChange}
-          />
-          {touched.email && errors.email && (
-            <div className="error">{errors.email}</div>
-          )}
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <Textfield
-            type="password"
-            id="password"
-            name="password"
-            placeholder="Enter Password"
-            value={values.password}
-            onChange={handleChange}
-          />
-          {touched.password && errors.password && (
-            <div className="error">{errors.password}</div>
-          )}
-        </div>
-        <div className="button-group">
-          <Button name="submit" />
-        </div>
       </Form>
-    </div>
+    </Container>
   );
 };
 

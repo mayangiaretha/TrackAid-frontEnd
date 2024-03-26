@@ -4,12 +4,10 @@
 }
 
 .sidebar {
-
   width: 200px;
   height: calc(100vh - 53px);
   background-color: grey;
   color: #fff;
-
 }
 
 .sidebar ul {

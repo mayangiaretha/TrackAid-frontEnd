@@ -1,6 +1,5 @@
 import { useRoutes } from 'react-router-dom';
 
-
 import Login from './features/login/login';
 import Questions from './features/questions/questions';
 import Registration from './features/registration/registration';
