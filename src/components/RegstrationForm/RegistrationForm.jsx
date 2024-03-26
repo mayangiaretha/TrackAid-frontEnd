@@ -58,6 +58,7 @@ const RegistrationForm = ({ formik, login }) => {
                 onChange={handleChange}
                 error={touched.username && Boolean(errors.username)}
                 helperText={touched.username && errors.username}
+                variant="standard"
               />
             </Grid>
           )}
@@ -72,6 +73,7 @@ const RegistrationForm = ({ formik, login }) => {
               onChange={handleChange}
               error={touched.email && Boolean(errors.email)}
               helperText={touched.email && errors.email}
+              variant="standard"
             />
           </Grid>
           <Grid item xs={12}>
@@ -85,6 +87,7 @@ const RegistrationForm = ({ formik, login }) => {
               onChange={handleChange}
               error={touched.password && Boolean(errors.password)}
               helperText={touched.password && errors.password}
+              variant="standard"
             />
           </Grid>
           <Grid item xs={12}>
