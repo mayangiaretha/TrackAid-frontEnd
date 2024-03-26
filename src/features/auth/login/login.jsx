@@ -5,10 +5,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 
-import '../../components/RegstrationForm/RegistrationForm.styles';
+import '../../../components/RegstrationForm/RegistrationForm.styles';
 import '../registration/registration.style';
-import RegistrationForm from '../../components/RegstrationForm/RegistrationForm';
-import { loginUser } from '../actions/auth.actions';
+import RegistrationForm from '../../../components/RegstrationForm/RegistrationForm';
+import {
+  StyledContainer,
+  StyledFormContainer,
+} from '../../../components/RegstrationForm/RegistrationForm.styles';
+import { loginUser } from '../../actions/auth.actions';
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -46,9 +50,9 @@ const Login = () => {
   };
 
   return (
-    <div className="container">
+    <StyledContainer maxWidth="1200px">
       {error.length > 0 && <div className="error">{error}</div>}
-      <div className="form-container">
+      <StyledFormContainer>
         <Formik
           initialValues={defaultValues}
           validationSchema={yupObject}
@@ -56,8 +60,8 @@ const Login = () => {
         >
           {(formik) => <RegistrationForm formik={formik} login={true} />}
         </Formik>
-      </div>
-    </div>
+      </StyledFormContainer>
+    </StyledContainer>
   );
 };
 

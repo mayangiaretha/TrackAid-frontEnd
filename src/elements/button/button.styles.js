@@ -3,18 +3,10 @@ import { Button, styled } from '@mui/material';
 import { COLORS } from '../../style/theme';
 
 export const StyledButton = styled(Button)`
-  min-height: 2.75rem;
-  border-radius: 1.5rem;
-  padding: ${({ theme }) => theme.spacing(0, 5)};
-  ${({ variant }) => {
-    if (variant === 'text') {
-      return `background-color:${COLORS.BLACK_5}; color: ${COLORS.WHITE_1};  &:hover {
-              background-color: ${COLORS.BLACK_6}; 
-              }
-        `;
-    }
-    return null;
-  }}
+  min-height: 2.5rem;
+  padding: ${({ theme }) => theme.spacing(1, 3)};
+  color: ${COLORS.WHITE_1};
+  background-color: ${COLORS.BLUE};
 
   &.Mui-disabled {
     ${({ disabled, variant }) => {

@@ -6,13 +6,16 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 
-import { StyledContainer, StyledFormContainer } from './registration.style';
-import RegistrationForm from '../../components/RegstrationForm/RegistrationForm';
-import { registerUser } from '../actions/auth.actions';
+import RegistrationForm from '../../../components/RegstrationForm/RegistrationForm';
+import {
+  StyledContainer,
+  StyledFormContainer,
+} from '../../../components/RegstrationForm/RegistrationForm.styles';
+import { registerUser } from '../../actions/auth.actions';
 
 const Registration = () => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const authState = useSelector((state) => state?.authentication);
   const [error, setError] = useState('');
 

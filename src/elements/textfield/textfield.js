@@ -1,3 +1,3 @@
-import { StyledTextField} from "./textfield.styles";
+import { StyledTextField } from './textfield.styles';
 
 export const TextField = StyledTextField;

@@ -23,6 +23,7 @@ export const COLORS = {
   ERROR: '#B40000',
   INFO: '#FCF7FB',
   PURPLE: '#EDA0E6',
+  BLUE: '#007bff',
 };
 
 // Define font styles to be used throughout the app
@@ -163,6 +164,10 @@ export const theme = createTheme({
       fontWeight: FONT.WEIGHT.REGULAR,
     },
     caption: {
+      fontSize: FONT.SIZES[12],
+      fontWeight: FONT.WEIGHT.REGULAR,
+    },
+    captionLink: {
       fontSize: FONT.SIZES[12],
       fontWeight: FONT.WEIGHT.REGULAR,
     },

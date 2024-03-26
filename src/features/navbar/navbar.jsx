@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import './navbar.css';
-import {Button} from "../../elements/button";
+import { Button } from '../../elements/button';
 
 const Navbar = () => {
   const authState = useSelector((state) => state?.authentication);
@@ -10,7 +10,7 @@ const Navbar = () => {
     <div className="navbar">
       <div className="left-corner">
         <Link to="/">
-          <span className="logo">covene</span>
+          <span className="logo">Tracker-Aid</span>
         </Link>
       </div>
       <div className="right-corner">
@@ -22,10 +22,10 @@ const Navbar = () => {
           <>
             {' '}
             <Link to="/login">
-              <Button name="Login" />
+              <Button variant="text">Login</Button>
             </Link>
             <Link to="/register">
-              <Button name="Sign In" />
+              <Button variant="text">Sign up</Button>
             </Link>
           </>
         )}
