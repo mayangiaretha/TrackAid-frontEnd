@@ -42,7 +42,13 @@ const RegistrationForm = ({ formik, login }) => {
             </Stack>
           ) : (
             <Stack>
-              <Typography variant="h4" sx={{ position: 'absolute', top: '250px', right: '620px'}}spacing={1}>Create an account</Typography>
+              <Typography
+                variant="h4"
+                sx={{ position: 'absolute', top: '250px', right: '620px' }}
+                spacing={1}
+              >
+                Create an account
+              </Typography>
             </Stack>
           )}
         </h1>
