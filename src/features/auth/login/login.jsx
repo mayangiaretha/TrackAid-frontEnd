@@ -12,7 +12,7 @@ import {
   StyledContainer,
   StyledFormContainer,
 } from '../../../components/RegstrationForm/RegistrationForm.styles';
-import { loginUser } from '../../actions/auth.actions';
+import { loginUser } from '../../actions/authActions/auth.actions';
 
 const Login = () => {
   const dispatch = useDispatch();

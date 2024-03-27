@@ -11,7 +11,7 @@ import {
   StyledContainer,
   StyledFormContainer,
 } from '../../../components/RegstrationForm/RegistrationForm.styles';
-import { registerUser } from '../../actions/auth.actions';
+import { registerUser } from '../../actions/authActions/auth.actions';
 
 const Registration = () => {
   const navigate = useNavigate();

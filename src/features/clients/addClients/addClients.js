@@ -6,7 +6,7 @@ import Drawer from '../../../layout/drawer/drawer';
 const AddClients = () => {
   return (
     <Drawer>
-      <Typography paragraph>Celloooo</Typography>
+      <Typography paragraph>this is the client page</Typography>
     </Drawer>
   );
 };
