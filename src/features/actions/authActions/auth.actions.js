@@ -10,12 +10,8 @@ import {
 import { instance } from '../../../config/client';
 
 export const loginUser = (loginData) => async (dispatch) => {
-
-
   try {
     const res = await instance.post('users/login', loginData);
-
-
 
     const { token } = res.data;
     localStorage.setItem('jwtToken', token);
@@ -25,8 +21,6 @@ export const loginUser = (loginData) => async (dispatch) => {
 
     dispatch(loginUserAction(decoded));
   } catch (err) {
-
-
     dispatch(loginFailed(err.response.data.message));
   }
 };

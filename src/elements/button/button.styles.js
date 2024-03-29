@@ -5,8 +5,13 @@ import { COLORS } from '../../style/theme';
 export const StyledButton = styled(Button)`
   min-height: 2.5rem;
   padding: ${({ theme }) => theme.spacing(1, 3)};
-  color: ${COLORS.WHITE_1};
-  background-color: ${COLORS.BLUE};
+  color: ${({ color }) => color === 'primary' ? COLORS.BLUE : COLORS.ERROR};
+  background-color: ${({ variant }) => variant === 'outlined' ? COLORS.WHITE_1 : COLORS.BLUE};
+  border-color: ${({ color }) => color === 'primary' ? COLORS.BLUE : COLORS.ERROR};
+
+  &:hover {
+    border-color: ${({ color }) => color === 'primary' ? COLORS.BLUE : COLORS.ERROR};
+  }
 
   &.Mui-disabled {
     ${({ disabled, variant }) => {

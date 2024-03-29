@@ -82,7 +82,6 @@ const baseTheme = createTheme({
   spacing: (factor) => `${SPACE_UNIT_IN_REM * factor}rem`,
 });
 
-// Theme used throughout the app
 export const theme = createTheme({
   ...baseTheme,
   mixins: {
@@ -101,7 +100,7 @@ export const theme = createTheme({
       disabled: COLORS.GREY_4,
     },
     primary: {
-      main: COLORS.BRAND_1,
+      main: COLORS.BLUE,
       light: COLORS.BRAND_2,
     },
     secondary: {
