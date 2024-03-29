@@ -2,27 +2,18 @@ import { Box, Container, Grid, Stack, Typography } from '@mui/material';
 import { Form } from 'formik';
 import { Link } from 'react-router-dom';
 
-import { StyledButton } from './RegistrationForm.styles';
+import { Button } from '../../elements/button';
 import { TextField } from '../../elements/textfield';
 import { COLORS } from '../../style/theme';
 
 const RegistrationForm = ({ formik, login }) => {
   const { handleSubmit, handleChange, values, touched, errors } = formik;
   return (
-    <Container component="main">
-      <Form sx={{ mt: 3 }} onSubmit={handleSubmit}>
-        <h1
-          style={{
-            margin: 'auto',
-            display: 'flex',
-            justifyContent: 'center',
-          }}
-        >
+    <Container component="main" px={14}>
+      <Form sx={{ mt: 1 }} onSubmit={handleSubmit}>
+        <h1>
           {login ? (
-            <Stack
-              sx={{ position: 'absolute', top: '250px', right: '750px' }}
-              spacing={1}
-            >
+            <Stack spacing={1} alignItems="flex-start" ml={12}>
               <Typography
                 variant="h5"
                 sx={{ fontFamily: 'italic', fontSize: '24px' }}
@@ -41,22 +32,18 @@ const RegistrationForm = ({ formik, login }) => {
               </Stack>
             </Stack>
           ) : (
-            <Stack>
-              <Typography
-                variant="h4"
-                sx={{ position: 'absolute', top: '250px', right: '620px' }}
-                spacing={1}
-              >
+            <Stack direction="row" spacing={1} alignItems="flex-start" ml={10}>
+              <Typography variant="h4" spacing={1}>
                 Create an account
               </Typography>
             </Stack>
           )}
         </h1>
-        <Grid container>
+        <Grid container spacing={login ? 15 : 8} px={8} mt={login ? -4 : 3}>
           {!login && (
             <Grid item xs={12}>
               <TextField
-                placeholder="Enter First Name"
+                placeholder="Enter Username"
                 name="username"
                 fullWidth
                 id="username"
@@ -105,10 +92,10 @@ const RegistrationForm = ({ formik, login }) => {
               mt={8}
               mx={4}
             >
-              <StyledButton type="submit" variant="text" fullWidth>
+              <Button type="submit" variant="text" fullWidth>
                 {' '}
                 Submit{' '}
-              </StyledButton>
+              </Button>
             </Stack>
           </Grid>
         </Grid>

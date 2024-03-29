@@ -1,11 +1,6 @@
 import styled from '@emotion/styled';
 import { Container as muiContainer } from '@mui/material';
-
-import { Button } from '../../elements/button/index';
 import { COLORS } from '../../style/theme';
-export const StyledButton = styled(Button)`
-  background: ${COLORS.BLUE};
-`;
 
 export const StyledContainer = styled(muiContainer)`
   display: flex;
@@ -18,11 +13,11 @@ export const StyledContainer = styled(muiContainer)`
 `;
 export const StyledFormContainer = styled(muiContainer)`
   display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #f5f4f2;
+  justify-content: flex-start;
+  align-items: start;
+  background: ${COLORS.GREY_5};
   height: 33.5rem;
   border-radius: 0.938rem;
   width: 30rem;
-  padding: 10px;
+  padding-top: 4rem;
 `;

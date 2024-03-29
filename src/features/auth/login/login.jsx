@@ -5,8 +5,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 
-import '../../../components/RegstrationForm/RegistrationForm.styles';
-import '../registration/registration.style';
 import RegistrationForm from '../../../components/RegstrationForm/RegistrationForm';
 import {
   StyledContainer,
