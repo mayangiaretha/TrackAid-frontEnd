@@ -1,5 +1,3 @@
-import './button.css';
+import { StyledButton } from './button.styles';
 
-const Button = ({ name }) => <button className="btn">{name}</button>;
-
-export default Button;
+export const Button = StyledButton;

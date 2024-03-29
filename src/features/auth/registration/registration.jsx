@@ -1,18 +1,21 @@
 import { useState, useEffect } from 'react';
 
+import { Alert } from '@mui/material';
 import { Formik } from 'formik';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 
-import '../../components/RegstrationForm/RegistrationForm.css';
-import '../registration/registration.css';
-import RegistrationForm from '../../components/RegstrationForm/RegistrationForm';
-import { loginUser } from '../actions/auth.actions';
+import RegistrationForm from '../../../components/RegstrationForm/RegistrationForm';
+import {
+  StyledContainer,
+  StyledFormContainer,
+} from '../../../components/RegstrationForm/RegistrationForm.styles';
+import { registerUser } from '../../actions/authActions/auth.actions';
 
-const Login = () => {
-  const dispatch = useDispatch();
+const Registration = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const authState = useSelector((state) => state?.authentication);
   const [error, setError] = useState('');
 
@@ -26,39 +29,44 @@ const Login = () => {
   }, [authState]);
 
   const defaultValues = {
+    username: '',
     email: '',
     password: '',
   };
 
   const yupObject = Yup.object({
+    username: Yup.string().required(),
     email: Yup.string().email().required(),
     password: Yup.string().required(),
   });
 
   const handleSubmit = (values) => {
-    const { email, password } = values;
+    const { email, password, username } = values;
 
-    const loginData = {
+    const registrationData = {
       email,
       password,
+      username,
     };
-    dispatch(loginUser(loginData));
+    dispatch(registerUser(registrationData));
   };
 
   return (
-    <div className="container">
-      {error.length > 0 && <div className="error">{error}</div>}
-      <div className="form-container">
+    <StyledContainer maxWidth="1200px">
+      {error.length > 0 && (
+        <Alert severity="error">This is an error Alert.</Alert>
+      )}
+      <StyledFormContainer>
         <Formik
           initialValues={defaultValues}
           validationSchema={yupObject}
           onSubmit={handleSubmit}
         >
-          {(formik) => <RegistrationForm formik={formik} login={true}/>}
+          {(formik) => <RegistrationForm formik={formik} login={false} />}
         </Formik>
-      </div>
-    </div>
+      </StyledFormContainer>
+    </StyledContainer>
   );
 };
 
-export default Login;
+export default Registration;
