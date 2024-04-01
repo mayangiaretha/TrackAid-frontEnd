@@ -9,8 +9,8 @@ import RegistrationForm from '../../../components/RegstrationForm/RegistrationFo
 import {
   StyledContainer,
   StyledFormContainer,
-} from '../../../components/RegstrationForm/RegistrationForm.styles';
-import { loginUser } from '../../actions/authActions/auth.actions';
+} from '../../../elements/Containers/Containers.styles';
+import { loginUser } from '../authActions/auth.actions';
 
 const Login = () => {
   const dispatch = useDispatch();

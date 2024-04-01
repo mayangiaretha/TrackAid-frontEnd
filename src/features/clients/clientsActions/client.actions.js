@@ -1,12 +1,5 @@
 import { instance } from '../../../config/client';
-import {
-  getAClientAction,
-  getClientsAction,
-  addClientAction,
-  editClientAction,
-  deleteClientAction,
-  clientActionFailed,
-} from './client.types';
+import { getClientsAction, clientActionFailed } from './client.types';
 
 export const getClients = () => (dispatch) => {
   instance
