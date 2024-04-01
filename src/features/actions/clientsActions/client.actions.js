@@ -8,11 +8,11 @@ import {
   clientActionFailed,
 } from './client.types';
 
-export const getClients = () => (dispatch) => {
+export const addClients = () => (dispatch) => {
   instance
-    .get('clients')
+    .post('clients')
     .then((res) => {
-      dispatch(getClientsAction(res.data));
+      dispatch(addClientAction(res.data));
     })
     .catch((err) => {
       dispatch(clientActionFailed(err.response.data));
