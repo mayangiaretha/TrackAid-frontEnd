@@ -3,6 +3,7 @@ import { useRoutes } from 'react-router-dom';
 import Login from './features/auth/login/login';
 import Registration from './features/auth/registration/registration';
 import ViewClients from './features/clients/viewClients/viewClients';
+import AddClients from './features/clients/addClients/AddClients';
 
 const Routes = () =>
   useRoutes([
@@ -11,12 +12,16 @@ const Routes = () =>
       element: <Registration />,
     },
     {
-      path: '/login',
+      path: '/',
       element: <Login />,
     },
     {
       path: '/clients',
       element: <ViewClients />,
+    },
+    {
+      path: '/addClient',
+      element: <AddClients />,
     },
   ]);
 export default Routes;

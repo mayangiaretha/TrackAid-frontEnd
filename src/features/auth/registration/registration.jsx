@@ -24,7 +24,7 @@ const Registration = () => {
       setError(authState.error);
     }
     if (authState.isAuthenticated) {
-      navigate('/');
+      navigate('/clients');
     }
   }, [authState]);
 

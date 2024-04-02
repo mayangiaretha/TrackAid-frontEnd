@@ -1,9 +1,11 @@
+import { Link } from 'react-router-dom';
 import { Container, IconButton, Stack } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 import MiniDrawer from '../../../layout/drawer/drawer';
 import DataGrid from '../../../components/DataGrid/DataGrid';
+import { Button } from '../../../elements/button';
 
 const columns = [
   { field: 'id', headerName: 'ID', width: 0 },
@@ -61,10 +63,16 @@ const columns = [
 ];
 
 export const ClientsDataGrid = ({ allClients }) => {
-  console.log(allClients, 'the clients ==============>');
   return (
     <MiniDrawer>
       <Container>
+        <Stack my={4}>
+          <Link to="/addClient">
+            <Button variant="text" width="10rem">
+              Add Client
+            </Button>
+          </Link>
+        </Stack>
         <DataGrid
           columns={columns}
           rows={allClients}

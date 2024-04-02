@@ -23,7 +23,7 @@ const Login = () => {
       setError(authState.error);
     }
     if (authState.isAuthenticated) {
-      navigate('/');
+      navigate('/clients');
     }
   }, [authState]);
 
