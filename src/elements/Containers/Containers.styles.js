@@ -8,7 +8,8 @@ export const StyledContainer = styled(muiContainer)`
   align-items: center;
   margin: 0;
   width: 100%;
-  height: 100vh;
+  height: ${({ customHeight }) =>
+          customHeight ? customHeight : '100vh'};
   background: #ffffff;
 `;
 export const StyledFormContainer = styled(muiContainer)`
