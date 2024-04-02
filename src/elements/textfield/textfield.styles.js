@@ -4,7 +4,6 @@ import { COLORS } from '../../style/theme';
 
 export const StyledTextField = styled(TextField)`
   height: 0.75rem;
-  
 
   padding: ${({ theme }) => theme.spacing(5, 3)};
 

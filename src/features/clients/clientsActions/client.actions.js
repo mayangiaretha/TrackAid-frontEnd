@@ -1,5 +1,9 @@
 import { instance } from '../../../config/client';
-import { getClientsAction, clientActionFailed } from './client.types';
+import {
+  getClientsAction,
+  clientActionFailed,
+  addClientAction,
+} from './client.types';
 
 export const getClients = () => (dispatch) => {
   instance
@@ -10,4 +14,12 @@ export const getClients = () => (dispatch) => {
     .catch((err) => {
       dispatch(clientActionFailed(err.response.data));
     });
+};
+export const addClients = () => (addClientData) => async (dispatch) => {
+  try {
+    const res = await instance.post('clients', addClientData);
+    dispatch(addClientAction(res.data));
+  } catch (err) {
+    dispatch(clientActionFailed(err.response.data));
+  }
 };
