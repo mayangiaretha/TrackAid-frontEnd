@@ -4,16 +4,10 @@ import { COLORS } from '../../style/theme';
 
 export const StyledTextField = styled(TextField)`
   height: 0.75rem;
-  border-radius: 5rem;
-
-  & .MuiOutlinedInput-root {
-    border-radius: 3.125rem;
-  }
 
   padding: ${({ theme }) => theme.spacing(5, 3)};
 
   & .MuiInputBase-root {
-    border-radius: 150px;
     width: ${({ width }) => width};
   }
 

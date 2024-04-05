@@ -25,7 +25,9 @@ const RegistrationForm = ({ formik, login }) => {
                   New User?{' '}
                   <Link to="/register">
                     <Box sx={{ color: `${COLORS.BLUE}` }} component="span">
-                      Create an account
+                      <Typography variant="caption">
+                        Create an account
+                      </Typography>
                     </Box>
                   </Link>
                 </Typography>

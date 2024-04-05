@@ -10,8 +10,8 @@ import RegistrationForm from '../../../components/RegstrationForm/RegistrationFo
 import {
   StyledContainer,
   StyledFormContainer,
-} from '../../../components/RegstrationForm/RegistrationForm.styles';
-import { registerUser } from '../../actions/authActions/auth.actions';
+} from '../../../elements/Containers/Containers.styles';
+import { registerUser } from '../authActions/auth.actions';
 
 const Registration = () => {
   const navigate = useNavigate();
@@ -24,7 +24,7 @@ const Registration = () => {
       setError(authState.error);
     }
     if (authState.isAuthenticated) {
-      navigate('/');
+      navigate('/clients');
     }
   }, [authState]);
 

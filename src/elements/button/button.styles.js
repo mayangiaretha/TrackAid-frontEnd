@@ -4,6 +4,7 @@ import { COLORS } from '../../style/theme';
 
 export const StyledButton = styled(Button)`
   min-height: 2.5rem;
+  ${({ width }) => width && `width: ${width};`}
   padding: ${({ theme }) => theme.spacing(1, 3)};
   color: ${({ color }) =>
     color === 'primary'

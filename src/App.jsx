@@ -4,7 +4,7 @@ import { ThemeProvider } from '@mui/material';
 
 import './App.css';
 import Navbar from './features/navbar/navbar';
-import store from './redux/combined store';
+import store from './redux/combinedstore';
 import Routes from './router';
 import { getTokenData } from './utils/getToken';
 import { theme } from './style/theme';

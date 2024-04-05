@@ -1,7 +1,7 @@
 import { jwtDecode } from 'jwt-decode';
 
-import { loginUserAction } from '../features/actions/authActions/auth.types';
-import store from '../redux/combined store';
+import { loginUserAction } from '../features/auth/authActions/auth.types';
+import store from '../redux/combinedstore';
 
 export const getTokenData = () => {
   if (localStorage.jwtToken) {
