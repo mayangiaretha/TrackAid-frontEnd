@@ -57,7 +57,7 @@ const Login = () => {
           open={open}
           setError={setError}
           setOpen={setOpen}
-          message="Wrong credentioals please review your email and password"
+          message="Wrong credentials please review your email and password"
         />
       )}
       <StyledFormContainer>

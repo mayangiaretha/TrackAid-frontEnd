@@ -24,6 +24,7 @@ import {
 } from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
 import { styled, useTheme } from '@mui/material/styles';
+import { COLORS } from '../../style/theme';
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -131,7 +132,15 @@ export default function MiniDrawer({ children }) {
               Tracker-Aid
             </Typography>
             <Box>
-              <Avatar>{user.isAuthenticated && `${user.currentUser.username[0].toUpperCase()}`}</Avatar>
+              <Avatar
+                sx={{
+                  backgroundColor: `${COLORS.WHITE_1}`,
+                  color: `${COLORS.BLUE}`,
+                }}
+              >
+                {user.isAuthenticated &&
+                  `${user.currentUser.username[0].toUpperCase()}`}
+              </Avatar>
             </Box>
           </Stack>
         </Toolbar>

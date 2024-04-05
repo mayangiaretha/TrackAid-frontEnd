@@ -17,8 +17,6 @@ const EditClients = () => {
 
   const client = useSelector((state) => state?.clients.client.client);
 
-  console.log(client, 'the client ============>');
-
   const defaultValues = {
     name: client ? client.name : '',
     address: client ? client.address : '',
