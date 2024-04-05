@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useSelector } from 'react-redux';
 
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
@@ -8,6 +9,7 @@ import PeopleIcon from '@mui/icons-material/People';
 
 import {
   AppBar as MuiAppBar,
+  Avatar,
   Drawer as MuiDrawer,
   Box,
   IconButton,
@@ -16,6 +18,7 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  Stack,
   Toolbar,
   Typography,
 } from '@mui/material';
@@ -92,6 +95,8 @@ export default function MiniDrawer({ children }) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
+  const user = useSelector((state) => state?.authentication);
+
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -117,9 +122,18 @@ export default function MiniDrawer({ children }) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Tracker-Aid
-          </Typography>
+          <Stack
+            direction="row"
+            justifyContent="space-between"
+            sx={{ width: '100%' }}
+          >
+            <Typography variant="h6" noWrap component="div">
+              Tracker-Aid
+            </Typography>
+            <Box>
+              <Avatar>{user.isAuthenticated && `${user.currentUser.username[0].toUpperCase()}`}</Avatar>
+            </Box>
+          </Stack>
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>

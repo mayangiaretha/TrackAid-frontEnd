@@ -10,6 +10,7 @@ import {
   StyledContainer,
   StyledFormContainer,
 } from '../../../elements/Containers/Containers.styles';
+import MuiSnackBar from '../../../components/Snackbar/Snakbar';
 import { loginUser } from '../authActions/auth.actions';
 
 const Login = () => {
@@ -17,10 +18,12 @@ const Login = () => {
   const navigate = useNavigate();
   const authState = useSelector((state) => state?.authentication);
   const [error, setError] = useState('');
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     if (authState.error) {
       setError(authState.error);
+      setOpen(true);
     }
     if (authState.isAuthenticated) {
       navigate('/clients');
@@ -49,7 +52,14 @@ const Login = () => {
 
   return (
     <StyledContainer maxWidth="1200px">
-      {error.length > 0 && <div className="error">{error}</div>}
+      {error.length > 0 && (
+        <MuiSnackBar
+          open={open}
+          setError={setError}
+          setOpen={setOpen}
+          message="Wrong credentioals please review your email and password"
+        />
+      )}
       <StyledFormContainer>
         <Formik
           initialValues={defaultValues}
