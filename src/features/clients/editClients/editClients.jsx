@@ -1,20 +1,29 @@
+import { useEffect } from 'react';
 import { Formik } from 'formik';
 import { object, string } from 'yup';
-
-import ClientsForm from '../../../components/ClientsForm/ClientsForm';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { getClient, editClient } from '../clientsActions/client.actions';
 import MiniDrawer from '../../../layout/drawer/drawer';
-import { addClients } from '../clientsActions/client.actions';
-import { useDispatch } from 'react-redux';
+import ClientsForm from '../../../components/ClientsForm/ClientsForm';
 
-const AddClients = () => {
+const EditClients = () => {
+  const { clientId } = useParams();
   const dispatch = useDispatch();
-  const addClientActionCreator = addClients();
+
+  useEffect(() => {
+    dispatch(getClient(clientId));
+  }, []);
+
+  const client = useSelector((state) => state?.clients.client.client);
+
+  console.log(client, 'the client ============>');
 
   const defaultValues = {
-    name: '',
-    address: '',
-    email: '',
-    telephone: '',
+    name: client ? client.name : '',
+    address: client ? client.address : '',
+    email: client ? client.email : '',
+    telephone: client ? client.telephone : '',
   };
 
   const yupObject = object({
@@ -26,13 +35,13 @@ const AddClients = () => {
 
   const handleSubmit = (values) => {
     const { name, address, telephone, email } = values;
-    const addClientData = {
+    const editClientData = {
       name,
       email,
       address,
       telephone,
     };
-    dispatch(addClientActionCreator(addClientData));
+    dispatch(editClient(editClientData, clientId));
   };
 
   return (
@@ -41,6 +50,7 @@ const AddClients = () => {
         initialValues={defaultValues}
         onSubmit={handleSubmit}
         validationSchema={yupObject}
+        enableReinitialize
       >
         {(formik) => <ClientsForm formik={formik} />}
       </Formik>
@@ -48,4 +58,4 @@ const AddClients = () => {
   );
 };
 
-export default AddClients;
+export default EditClients;

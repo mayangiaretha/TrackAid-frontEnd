@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Container, IconButton, Stack } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
@@ -40,18 +41,21 @@ const columns = [
     flex: 1,
     minWidth: 150,
     renderCell: (params) => {
+      const navigate = useNavigate();
       const handleClientDelete = (id) => {
         console.log(id, 'the client id onDelete============>');
       };
 
       const handleClientEdit = (id) => {
-        console.log(id, 'the client id onEdit============>');
+        navigate(`/editClient/${id}`);
       };
 
       return (
         <Stack justifyContent="space-evenly" direction="row">
           <IconButton onClick={() => handleClientEdit(params.id)}>
-            <EditIcon />
+            <Link to={`/editClient/${params.id}`}>
+              <EditIcon />
+            </Link>
           </IconButton>
           <IconButton onClick={() => handleClientDelete(params.id)}>
             <DeleteForeverIcon />

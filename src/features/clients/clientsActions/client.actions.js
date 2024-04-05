@@ -3,6 +3,8 @@ import {
   getClientsAction,
   clientActionFailed,
   addClientAction,
+  editClientAction,
+  getAClientAction,
 } from './client.types';
 
 export const getClients = () => (dispatch) => {
@@ -22,4 +24,25 @@ export const addClients = () => (addClientData) => async (dispatch) => {
   } catch (err) {
     dispatch(clientActionFailed(err.response.data));
   }
+};
+export const editClient = (jsonData, clientId) => (dispatch) => {
+  instance
+    .put(`clients/${clientId}`, jsonData)
+    .then(() => dispatch(editClientAction()))
+    .catch((err) => {
+      dispatch(clientActionFailed(err?.response?.data));
+    });
+};
+
+export const getClient = (clientId) => (dispatch) => {
+  console.log(clientId, 'the id in axios =============>');
+
+  instance
+    .get(`clients/${clientId}`)
+    .then((res) => {
+      dispatch(getAClientAction(res.data));
+    })
+    .catch((err) => {
+      dispatch(clientActionFailed(err.response.data));
+    });
 };
