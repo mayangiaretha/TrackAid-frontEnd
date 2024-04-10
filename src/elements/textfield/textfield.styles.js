@@ -3,7 +3,7 @@ import { TextField, styled } from '@mui/material';
 import { COLORS } from '../../style/theme';
 
 export const StyledTextField = styled(TextField)`
-  height: 0.75rem;
+  height: 0.35rem;
 
   padding: ${({ theme }) => theme.spacing(5, 3)};
 
