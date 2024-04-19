@@ -2,11 +2,12 @@ import {
   Typography,
   Container,
   InputAdornment,
-  Stack,
   TextField,
-  TextareaAutosize as TextArea,
+  Box,
 } from '@mui/material';
 import TagIcon from '@mui/icons-material/Tag';
+import TableForm from './tableForm';
+import PaymentDetails from './paymentDetails';
 
 const InvoiceForm = () => {
   const calculateAmount = (quantity, price) => {
@@ -27,59 +28,175 @@ const InvoiceForm = () => {
   });
 
   return (
-    <Container>
-      <Stack spacing={2} mb={12}>
-        <Stack direction="row" justifyContent="flex-end">
-          <Typography variant="h1">
-            <strong>INVOICE</strong>
-          </Typography>
-        </Stack>
-        <Stack direction="row" justifyContent="flex-end">
-          <TextField
-            placeholder="invoice No."
-            variant="outlined"
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <TagIcon />
-                </InputAdornment>
-              ),
-            }}
-          />
-        </Stack>
-      </Stack>
+    <Container
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-end',
+        height: 'auto',
+      }}
+    >
+      <Box style={{ alignSelf: 'flex-end', marginBottom: 8 }}>
+        <Typography variant="h1" component="strong">
+          INVOICE
+        </Typography>
+      </Box>
+      <Box style={{ alignSelf: 'flex-end', marginBottom: 8 }}>
+        <TextField
+          placeholder="Invoice No."
+          variant="outlined"
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <TagIcon />
+              </InputAdornment>
+            ),
+          }}
+        />
+      </Box>
 
-      <Stack spacing={2}>
-        <Stack direction="row" justifyContent="space-between">
-          <TextArea
-              placeholder="who is this invoice from? (required)"
-              minRows={3}
-              style={{ width: 300, resize: 'none', padding: '4px 2px 2px 8px' }}
+      <Box
+        style={{
+          alignSelf: 'flex-end',
+          marginBottom: 8,
+          width: 300,
+          display: 'flex',
+          alignItems: 'center',
+        }}
+      >
+        <Typography variant="body1" style={{ marginRight: 8 }}>
+          Invoice Date:
+        </Typography>
+        <TextField
+          placeholder="Enter date"
+          variant="standard"
+          InputProps={{
+            disableUnderline: true, // This removes the underline
+          }}
+          style={{ flex: 1 }}
+        />
+      </Box>
+      <Box
+        style={{
+          alignSelf: 'flex-end',
+          marginBottom: 8,
+          width: 300,
+          display: 'flex',
+          alignItems: 'center',
+        }}
+      >
+        <Typography variant="body1" style={{ marginRight: 8 }}>
+          Due Date:
+        </Typography>
+        <TextField
+          placeholder="Enter date"
+          variant="standard"
+          InputProps={{
+            disableUnderline: true,
+          }}
+          style={{ flex: 1 }}
+        />
+      </Box>
+      <Box style={{ alignSelf: 'flex-start', marginTop: -180 }}>
+        {' '}
+        <Typography variant="h3" style={{ marginBottom: 8 }}>
+          INVOICE TO:
+        </Typography>
+        {/* New parent container */}
+        <Box
+          style={{
+            alignSelf: 'flex-start',
+            marginBottom: 8,
+            width: 300,
+            display: 'flex',
+            alignItems: 'center',
+          }}
+        >
+          <Typography variant="body1" style={{ marginRight: 8 }}>
+            Name:
+          </Typography>
+          <TextField
+            placeholder="Enter Client's Name"
+            variant="standard"
+            InputProps={{
+              disableUnderline: true,
+            }}
+            style={{ flex: 1 }}
           />
-          <Stack spacing={2}>
-            <TextField label="Date" variant="outlined" />
-            <TextField placeholder="PaymentTerms" variant="outlined" />
-          </Stack>
-        </Stack>
-        <Stack direction="row" justifyContent="space-between">
-          <Stack direction="row" spacing={2}>
-            <TextArea
-                placeholder="who is this invoice to? (required)"
-                minRows={3}
-                style={{ width: 300, resize: 'none', padding: '4px 2px 2px 8px' }}
-            />
-            <TextArea
-                placeholder="who is this invoice from? (required)"
-                minRows={3}
-                style={{ width: 300, resize: 'none', padding: '4px 2px 2px 8px' }}
-            />
-          </Stack>
-          <TextField placeholder="Due Date" variant="outlined" />
-        </Stack>
-        <Stack direction="row" justifyContent="flex-end">
-          <TextField placeholder="PO Number" variant="outlined" />
-        </Stack>
-      </Stack>
+        </Box>
+        <Box
+          style={{
+            alignSelf: 'flex-start',
+            marginBottom: 8,
+            width: 300,
+            display: 'flex',
+            alignItems: 'center',
+          }}
+        >
+          <Typography variant="body1" style={{ marginRight: 8 }}>
+            Company:
+          </Typography>
+          <TextField
+            placeholder="Company Name"
+            variant="standard"
+            InputProps={{
+              disableUnderline: true,
+            }}
+            style={{ flex: 1 }}
+          />
+        </Box>
+        <Box
+          style={{
+            alignSelf: 'flex-start',
+            marginBottom: 8,
+            width: 300,
+            display: 'flex',
+            alignItems: 'center',
+          }}
+        >
+          <Typography variant="body1" style={{ marginRight: 8 }}>
+            Phone:
+          </Typography>
+          <TextField
+            placeholder="Phone Number"
+            variant="standard"
+            InputProps={{
+              disableUnderline: true,
+            }}
+            style={{ flex: 1 }}
+          />
+        </Box>
+        <Box
+          style={{
+            alignSelf: 'flex-start',
+            marginBottom: 8,
+            width: 300,
+            display: 'flex',
+            alignItems: 'center',
+          }}
+        >
+          <Typography variant="body1" style={{ marginRight: 8 }}>
+            Email:
+          </Typography>
+          <TextField
+            placeholder="Email Address"
+            variant="standard"
+            InputProps={{
+              disableUnderline: true,
+            }}
+            style={{ flex: 1 }}
+          />
+        </Box>
+      </Box>
+      <Container
+        style={{
+          marginTop: 12,
+          width: '100%',
+        }}
+      >
+        <TableForm />
+      </Container>
+      <PaymentDetails />
     </Container>
   );
 };

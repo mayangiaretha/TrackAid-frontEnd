@@ -39,7 +39,7 @@ export const registerUser = (registrationData) => async (dispatch) => {
   }
 };
 
-export const logoutLandlord = () => (dispatch) => {
+export const logoutUser = () => (dispatch) => {
   localStorage.removeItem('jwtToken');
   dispatch(logoutUserAction());
 };

@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useNavigate, Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ReceiptIcon from '@mui/icons-material/Receipt';
 import MenuIcon from '@mui/icons-material/Menu';
 import PeopleIcon from '@mui/icons-material/People';
-
+import LogoutIcon from '@mui/icons-material/Logout';
 import {
   AppBar as MuiAppBar,
   Avatar,
@@ -25,7 +25,11 @@ import {
 } from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
 import { styled, useTheme } from '@mui/material/styles';
+
+import { logoutUser } from '../../features/auth/authActions/auth.actions';
 import { COLORS } from '../../style/theme';
+import { ContentLink, StyledList } from './drawer.styles';
+
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -97,6 +101,9 @@ export default function MiniDrawer({ children }) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const user = useSelector((state) => state?.authentication);
 
   const handleDrawerOpen = () => {
@@ -105,6 +112,11 @@ export default function MiniDrawer({ children }) {
 
   const handleDrawerClose = () => {
     setOpen(false);
+  };
+
+  const handleLogout = () => {
+    dispatch(logoutUser());
+    navigate('/');
   };
 
   return (
@@ -182,6 +194,18 @@ export default function MiniDrawer({ children }) {
               </Link>
             </ListItem>
           ))}
+        </List>
+        <List>
+          <StyledList>
+            <ListItem onClick={handleLogout}>
+              <ContentLink>
+                <ListItemIcon>
+                  <LogoutIcon />
+                </ListItemIcon>
+                <ListItemText primary="Log Out" />
+              </ContentLink>
+            </ListItem>
+          </StyledList>
         </List>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
