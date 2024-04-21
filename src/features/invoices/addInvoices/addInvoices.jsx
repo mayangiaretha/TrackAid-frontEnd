@@ -1,7 +1,7 @@
 import MiniDrawer from '../../../layout/drawer/drawer';
 import InvoiceForm from '../../../components/invoiceForm/invoiceForm';
 import { useDispatch, useSelector } from 'react-redux';
-import { number, object, string } from 'yup';
+import { number, object, string, array } from 'yup';
 import { addInvoices, getAllInvoices } from '../invoiceActions/invoice.action';
 import { Formik } from 'formik';
 import { useEffect, useState } from 'react';
@@ -26,14 +26,49 @@ const AddInvoices = () => {
     telephone: '',
     invoiceId: '',
     address: '',
-    items: [],
+    items: [
+      {
+        product: 'Product',
+        description: 'description',
+        unitPrice: 0,
+        total: 0,
+        quantity: 0,
+      },
+      {
+        product: '',
+        description: 'description',
+        unitPrice: 1,
+        total: 1,
+        quantity: 1,
+      },
+      {
+        product: 'asus rog',
+        description: 'phone',
+        unitPrice: 1000,
+        total: 1,
+        quantity: 1,
+      },
+    ],
     amount: 0,
     dueDate: '',
     status: '',
   };
+
+  const itemSchema = object().shape({
+    product: string().required('Product is required'),
+    description: string().required('Description is required'),
+    unitPrice: number().required('Unit price is required'),
+    total: number().required('Total is required'),
+    quantity: number().required('Quantity is required'),
+  });
+
   const yupObject = object({
     name: string().required('name is required'),
     invoiceNo: number().required('invoice is required'),
+    items: array()
+      .of(itemSchema)
+      .required('Items are required')
+      .min(1, 'At least one item is required'),
     // address: string().required('address is required'),
     // email: string().email().required('email is required'),
     // telephone: string().required('telephone is required'),
@@ -42,10 +77,6 @@ const AddInvoices = () => {
     // amount: number()
     //   .required('Amount is required')
     //   .min(0, 'Amount must be greater than or equal to 0'),
-    // items: array()
-    //   .of(itemSchema)
-    //   .required('Items are required')
-    //   .min(1, 'At least one item is required'),
   });
   const handleSubmit = async (values) => {
     const { name, address, telephone, email, invoiceNo } = values;

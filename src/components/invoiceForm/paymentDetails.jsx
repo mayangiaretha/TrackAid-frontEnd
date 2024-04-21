@@ -129,21 +129,8 @@ const PaymentDetails = () => {
             style={{ flex: 1 }}
           />
         </Box>
-        <Box style={{ alignSelf: 'flex-start', marginTop: -100 }}>
+        <Box style={{ alignSelf: 'flex-start', marginTop: -150 }}>
           {' '}
-          <Stack my={4} marginTop={-10}>
-            <Button
-              type="submit"
-              variant="text"
-              sx={{
-                width: '10rem',
-                backgroundColor: COLORS.BLUE_1,
-                color: 'white',
-              }}
-            >
-              save invoice
-            </Button>
-          </Stack>
           <Typography variant="h3" style={{ marginBottom: 8 }}>
             Payment method:
           </Typography>
@@ -232,6 +219,19 @@ const PaymentDetails = () => {
               style={{ flex: 1 }}
             />
           </Box>
+          <Stack my={4} marginTop={-10}>
+            <Button
+              type="submit"
+              variant="text"
+              sx={{
+                width: '10rem',
+                backgroundColor: COLORS.BLUE_1,
+                color: 'white',
+              }}
+            >
+              save invoice
+            </Button>
+          </Stack>
         </Box>
       </Container>
     </>

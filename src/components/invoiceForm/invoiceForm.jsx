@@ -12,7 +12,8 @@ import TableForm from './tableForm';
 import PaymentDetails from './paymentDetails';
 
 const InvoiceForm = ({ formik }) => {
-  const { handleSubmit, values, handleChange, touched, errors } = formik;
+  const { handleSubmit, values, handleChange, touched, errors, setFieldValue } =
+    formik;
 
   console.log(errors, 'the errors =======>');
 
@@ -176,9 +177,15 @@ const InvoiceForm = ({ formik }) => {
           </Box>
         </Box>
         <Container mt={12}>
-          <TableForm />
+          <TableForm
+            values={values}
+            handleChange={handleChange}
+            errors={errors}
+            touched={touched}
+            setFieldValue={setFieldValue}
+          />
         </Container>
-        <PaymentDetails />
+        <PaymentDetails values={values} handleChange={handleChange} />
       </Form>
     </Container>
   );
