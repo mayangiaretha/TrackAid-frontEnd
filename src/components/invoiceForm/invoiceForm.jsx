@@ -9,18 +9,17 @@ import TagIcon from '@mui/icons-material/Tag';
 import TableForm from './tableForm';
 import PaymentDetails from './paymentDetails';
 
-const InvoiceForm = () => {
+const InvoiceForm = ({ formik }) => {
+  const { handleSubmit, values, handleChange, touched, errors } = formik;
   const calculateAmount = (quantity, price) => {
     return quantity * price;
   };
 
   const items = [
     {
-      id: '661670269068f75d33993281',
-      productName: 'Product k',
-      quantity: 5,
-      price: 100,
-      amount: calculateAmount(5, 100), // Calculated amount based on quantity and price
+      quantity: '',
+      price: '',
+      amount: calculateAmount('', ''), // Calculated amount based on quantity and price
     },
   ];
   items.forEach((item) => {
@@ -45,6 +44,10 @@ const InvoiceForm = () => {
         <TextField
           placeholder="Invoice No."
           variant="outlined"
+          value={values.invoiceId}
+          onChange={handleChange}
+          error={touched.invoiceId && Boolean(errors.invoiceId)}
+          helperText={touched.invoiceId && errors.invoiceId}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">

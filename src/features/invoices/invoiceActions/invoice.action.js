@@ -10,3 +10,12 @@ export const getAllInvoices = () => (dispatch) => {
       dispatch(invoiceActionFailed(err.response.data));
     });
 };
+
+export const addInvoices = () => (addInvoiceData) => async (dispatch) => {
+  try {
+    const res = await instance.post('invoices', addInvoicesData);
+    dispatch(addInvoiceData)(res.data);
+  } catch (err) {
+    dispatch(invoiceActionFailed(err.response.data));
+  }
+};

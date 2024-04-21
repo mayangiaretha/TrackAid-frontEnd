@@ -114,7 +114,7 @@ const PaymentDetails = () => {
               position: 'absolute',
               width: '100%',
               borderTop: '2px solid #03a9fc',
-                marginTop: '-55px',
+              marginTop: '-55px',
             }}
           />
           <Typography variant="body1" style={{ marginRight: 8 }}>
