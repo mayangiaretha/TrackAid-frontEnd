@@ -11,13 +11,17 @@ const PaymentDetails = ({ values, handleChange }) => {
   });
 
   useEffect(() => {
-      const subTotal = values.items.reduce((acc, item) => acc + parseFloat(item.total), 0);
-      const tax = subTotal * 0.18;
-      const total = subTotal + tax;
+    const subTotal = values.items.reduce(
+      (acc, item) => acc + parseFloat(item.total),
+      0,
+    );
+    const tax = subTotal * 0.18;
+    const total = subTotal + tax;
 
     setPriceValues({ subTotal, tax, total });
   }, [values.items]);
 
+  console.log(values.items, 'the values =====>');
   return (
     <>
       <Container

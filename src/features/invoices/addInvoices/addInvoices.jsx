@@ -92,6 +92,7 @@ const AddInvoices = () => {
     };
     await dispatch(addInvoices(data));
   };
+
   return (
     <MiniDrawer>
       <Formik

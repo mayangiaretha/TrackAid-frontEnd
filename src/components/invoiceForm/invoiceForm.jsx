@@ -15,6 +15,7 @@ const InvoiceForm = ({ formik }) => {
   const { handleSubmit, values, handleChange, touched, errors, setFieldValue } =
     formik;
 
+  console.log(values.items, 'the items ======>');
   return (
     <Container
       style={{

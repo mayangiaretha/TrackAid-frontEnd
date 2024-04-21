@@ -11,6 +11,7 @@ import {
 import { COLORS } from '../../style/theme';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { useEffect } from 'react';
 
 const TableForm = ({
   values,
@@ -40,6 +41,17 @@ const TableForm = ({
     const total = quantity * unitPrice;
     return isNaN(total) ? '' : total.toFixed(2);
   };
+
+  /**
+   * Necessary to stop the calculated value from being one step behind
+   */
+  useEffect(() => {
+    // Recalculate total for each item whenever values change
+    values.items.forEach((item, index) => {
+      const total = calculateTotal(index);
+      setFieldValue(`items.${index}.total`, total);
+    });
+  }, [values.items, setFieldValue]);
 
   const handleUnitPriceChange = (index, value) => {
     setFieldValue(`items.${index}.unitPrice`, value);
