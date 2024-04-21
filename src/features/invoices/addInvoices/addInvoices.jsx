@@ -28,30 +28,32 @@ const AddInvoices = () => {
     address: '',
     items: [
       {
-        product: 'Product',
-        description: 'description',
-        unitPrice: 0,
-        total: 0,
-        quantity: 0,
+        product: 'Mazda',
+        description: 'cx-5',
+        unitPrice: 32000,
+        total: 128000,
+        quantity: 4,
       },
       {
-        product: '',
-        description: 'description',
-        unitPrice: 1,
-        total: 1,
-        quantity: 1,
+        product: 'Mac Book',
+        description: 'M1 pro',
+        unitPrice: 3000,
+        total: 6000,
+        quantity: 2,
       },
       {
         product: 'asus rog',
         description: 'phone',
         unitPrice: 1000,
-        total: 1,
+        total: 1000,
         quantity: 1,
       },
     ],
-    amount: 0,
+    total: 0,
     dueDate: '',
     status: '',
+    subtotal: 0,
+    tax: 0,
   };
 
   const itemSchema = object().shape({
@@ -90,7 +92,6 @@ const AddInvoices = () => {
     };
     await dispatch(addInvoices(data));
   };
-  console.log(defaultValues, 'the values default ============>');
   return (
     <MiniDrawer>
       <Formik

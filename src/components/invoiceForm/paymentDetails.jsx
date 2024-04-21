@@ -1,8 +1,23 @@
 import { Box, Container, TextField, Typography, Stack } from '@mui/material';
 import { Button } from '../../elements/button';
 import { COLORS } from '../../style/theme';
+import { useState, useEffect } from 'react';
 
-const PaymentDetails = () => {
+const PaymentDetails = ({ values, handleChange }) => {
+  const [priceValues, setPriceValues] = useState({
+    subTotal: 0,
+    tax: 0,
+    total: 0,
+  });
+
+  useEffect(() => {
+    const subTotal = values.items.reduce((acc, item) => acc + item.total, 0);
+    const tax = subTotal * 0.18;
+    const total = subTotal + tax;
+
+    setPriceValues({ subTotal, tax, total });
+  }, [values.items]);
+
   return (
     <>
       <Container
@@ -20,7 +35,7 @@ const PaymentDetails = () => {
             width: 300,
             display: 'flex',
             alignItems: 'center',
-            marginTop: 8,
+            marginTop: 30,
           }}
         >
           <Typography variant="body1" style={{ marginRight: 8 }}>
@@ -29,27 +44,9 @@ const PaymentDetails = () => {
           <TextField
             placeholder="$"
             variant="standard"
-            InputProps={{
-              disableUnderline: true,
-            }}
-            style={{ flex: 1 }}
-          />
-        </Box>
-        <Box
-          style={{
-            alignSelf: 'flex-end',
-            marginBottom: 8,
-            width: 300,
-            display: 'flex',
-            alignItems: 'center',
-          }}
-        >
-          <Typography variant="body1" style={{ marginRight: 8 }}>
-            Discount:
-          </Typography>
-          <TextField
-            placeholder="0.00"
-            variant="standard"
+            name="subTotal"
+            value={priceValues.subTotal}
+            onChange={handleChange}
             InputProps={{
               disableUnderline: true,
             }}
@@ -69,28 +66,10 @@ const PaymentDetails = () => {
             Tax(18%):
           </Typography>
           <TextField
+            name="tax"
+            value={priceValues.tax}
+            onChange={handleChange}
             placeholder="$0.18"
-            variant="standard"
-            InputProps={{
-              disableUnderline: true,
-            }}
-            style={{ flex: 1 }}
-          />
-        </Box>
-        <Box
-          style={{
-            alignSelf: 'flex-end',
-            marginBottom: 8,
-            width: 300,
-            display: 'flex',
-            alignItems: 'center',
-          }}
-        >
-          <Typography variant="body1" style={{ marginRight: 15 }}>
-            Discount:
-          </Typography>
-          <TextField
-            placeholder="00.00"
             variant="standard"
             InputProps={{
               disableUnderline: true,
@@ -123,13 +102,16 @@ const PaymentDetails = () => {
           <TextField
             placeholder="$1000"
             variant="standard"
+            name="total"
+            value={priceValues.total}
+            onChange={handleChange}
             InputProps={{
               disableUnderline: true,
             }}
             style={{ flex: 1 }}
           />
         </Box>
-        <Box style={{ alignSelf: 'flex-start', marginTop: -150 }}>
+        <Box style={{ alignSelf: 'flex-start', marginTop: -100 }}>
           {' '}
           <Typography variant="h3" style={{ marginBottom: 8 }}>
             Payment method:
