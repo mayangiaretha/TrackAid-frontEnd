@@ -22,7 +22,7 @@ const TableForm = ({
   const addItem = () => {
     const newItems = [
       ...values.items,
-      { product: '', description: '', quantity: '', unitPrice: '', total: '' },
+      { product: '', description: '', quantity: 0, unitPrice: 0, total: 0 },
     ];
     setFieldValue('items', newItems);
   };
