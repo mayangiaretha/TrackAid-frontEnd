@@ -25,6 +25,7 @@ export const COLORS = {
   INFO: '#FCF7FB',
   PURPLE: '#EDA0E6',
   BLUE: '#007bff',
+  BLUE_1: '#03a9fc',
 };
 
 // Define font styles to be used throughout the app
