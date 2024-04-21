@@ -15,19 +15,24 @@ const InvoiceForm = ({ formik }) => {
   const { handleSubmit, values, handleChange, touched, errors, setFieldValue } =
     formik;
 
-  console.log(values.items, 'the items ======>');
   return (
     <Container
       style={{
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'flex-end',
-        height: 'auto',
+        alignItems: 'center',
+        justifyContent: 'center',
+        minHeight: '100vh',
       }}
     >
       <Form
         onSubmit={handleSubmit}
-        style={{ width: '100%', display: 'flex', flexDirection: 'column' }}
+        style={{
+          width: '100%',
+          height: 'auto',
+          display: 'flex',
+          flexDirection: 'column',
+        }}
       >
         <Box style={{ alignSelf: 'flex-end', marginBottom: 8 }}>
           <Typography variant="h1" component="strong">
