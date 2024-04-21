@@ -3,7 +3,8 @@ import {
   Container,
   InputAdornment,
   TextField,
-  Box
+  Stack,
+  Box,
 } from '@mui/material';
 import { Form } from 'formik';
 import TagIcon from '@mui/icons-material/Tag';
@@ -12,6 +13,8 @@ import PaymentDetails from './paymentDetails';
 
 const InvoiceForm = ({ formik }) => {
   const { handleSubmit, values, handleChange, touched, errors } = formik;
+
+  console.log(errors, 'the errors =======>');
 
   return (
     <Container
@@ -97,36 +100,24 @@ const InvoiceForm = ({ formik }) => {
             INVOICE TO:
           </Typography>
           {/* New parent container */}
-          <Box
-            style={{
-              alignSelf: 'flex-start',
-              marginBottom: 8,
-              width: 300,
-              display: 'flex',
-              alignItems: 'center',
-            }}
-          >
+          <Stack alignItems="center" direction="row" mb={2}>
             <Typography variant="body1" style={{ marginRight: 8 }}>
               Name:
             </Typography>
             <TextField
               placeholder="Enter Client's Name"
+              name="name"
               variant="standard"
+              value={values.name}
+              onChange={handleChange}
+              error={touched.name && Boolean(errors.name)}
+              helperText={touched.name && errors.name}
               InputProps={{
                 disableUnderline: true,
               }}
-              style={{ flex: 1 }}
             />
-          </Box>
-          <Box
-            style={{
-              alignSelf: 'flex-start',
-              marginBottom: 8,
-              width: 300,
-              display: 'flex',
-              alignItems: 'center',
-            }}
-          >
+          </Stack>
+          <Stack alignItems="center" direction="row" mb={2}>
             <Typography variant="body1" style={{ marginRight: 8 }}>
               Company:
             </Typography>
@@ -136,9 +127,8 @@ const InvoiceForm = ({ formik }) => {
               InputProps={{
                 disableUnderline: true,
               }}
-              style={{ flex: 1 }}
             />
-          </Box>
+          </Stack>
           <Box
             style={{
               alignSelf: 'flex-start',
@@ -182,12 +172,7 @@ const InvoiceForm = ({ formik }) => {
             />
           </Box>
         </Box>
-        <Container
-          style={{
-            marginTop: 12,
-            width: '100%',
-          }}
-        >
+        <Container mt={12}>
           <TableForm />
         </Container>
         <PaymentDetails />

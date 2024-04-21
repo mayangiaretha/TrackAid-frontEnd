@@ -24,7 +24,7 @@ const AddClients = () => {
     telephone: string().required('telephone is required'),
   });
 
-  const handleSubmit = (values) => {
+  const handleSubmit = async (values) => {
     const { name, address, telephone, email } = values;
     const addClientData = {
       name,
@@ -32,7 +32,7 @@ const AddClients = () => {
       address,
       telephone,
     };
-    dispatch(addClientActionCreator(addClientData));
+    await dispatch(addClientActionCreator(addClientData));
   };
 
   return (

@@ -7,7 +7,6 @@ import { Formik } from 'formik';
 
 const AddInvoices = () => {
   const dispatch = useDispatch;
-  const addInvoiceActionCreator = addInvoices();
 
   const defaultValues = {
     name: '',
@@ -22,9 +21,9 @@ const AddInvoices = () => {
   };
   const yupObject = object({
     name: string().required('name is required'),
-    address: string().required('address is required'),
-    email: string().email().required('email is required'),
-    telephone: string().required('telephone is required'),
+    // address: string().required('address is required'),
+    // email: string().email().required('email is required'),
+    // telephone: string().required('telephone is required'),
     // dueDate: string(),
     // status: string(),
     // amount: number()
@@ -35,17 +34,17 @@ const AddInvoices = () => {
     //   .required('Items are required')
     //   .min(1, 'At least one item is required'),
   });
-  const handleSubmit = (values) => {
-    console.log(values, 'the values ===========>');
-    // const { name, address, telephone, email } = values;
-    //
-    // const data = {
-    //   name,
-    //   email,
-    //   address,
-    //   telephone,
-    // };
-    // dispatch(addInvoices(data));
+  const handleSubmit = async (values) => {
+    const { name, address, telephone, email } = values;
+
+    const data = {
+      name,
+      email,
+      address,
+      telephone,
+    };
+    console.log(data, 'the data ============>');
+    await dispatch(addInvoices(data));
   };
   return (
     <MiniDrawer>

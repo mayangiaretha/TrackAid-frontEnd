@@ -133,6 +133,7 @@ const PaymentDetails = () => {
           {' '}
           <Stack my={4} marginTop={-10}>
             <Button
+              type="submit"
               variant="text"
               sx={{
                 width: '10rem',
