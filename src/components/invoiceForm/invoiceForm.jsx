@@ -34,14 +34,16 @@ const InvoiceForm = ({ formik }) => {
             INVOICE
           </Typography>
         </Box>
-        <Box style={{ alignSelf: 'flex-end', marginBottom: 8 }}>
+        <Stack direction="row" justifyContent="flex-end">
           <TextField
             placeholder="Invoice No."
             variant="outlined"
-            value={values.invoiceId}
+            name="invoiceNo"
+            value={values.invoiceNo}
             onChange={handleChange}
-            error={touched.invoiceId && Boolean(errors.invoiceId)}
-            helperText={touched.invoiceId && errors.invoiceId}
+            error={touched.invoiceNo && Boolean(errors.invoiceNo)}
+            helperText={touched.invoiceNo && errors.invoiceNo}
+            disabled
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
@@ -49,8 +51,9 @@ const InvoiceForm = ({ formik }) => {
                 </InputAdornment>
               ),
             }}
+            sx={{ color: 'black' }}
           />
-        </Box>
+        </Stack>
 
         <Box
           style={{

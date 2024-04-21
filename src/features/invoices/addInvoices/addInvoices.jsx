@@ -1,14 +1,26 @@
 import MiniDrawer from '../../../layout/drawer/drawer';
 import InvoiceForm from '../../../components/invoiceForm/invoiceForm';
-import { useDispatch } from 'react-redux';
-import { object, string } from 'yup';
-import { addInvoices } from '../invoiceActions/invoice.action';
+import { useDispatch, useSelector } from 'react-redux';
+import { number, object, string } from 'yup';
+import { addInvoices, getAllInvoices } from '../invoiceActions/invoice.action';
 import { Formik } from 'formik';
+import { useEffect, useState } from 'react';
 
 const AddInvoices = () => {
-  const dispatch = useDispatch;
+  const [countInvoices, setCountInvoices] = useState(0);
+  const dispatch = useDispatch();
+  const invoices = useSelector((state) => state?.invoices.invoices);
+
+  useEffect(() => {
+    dispatch(getAllInvoices());
+  }, []);
+
+  useEffect(() => {
+    setCountInvoices(invoices.length + 1);
+  }, [invoices]);
 
   const defaultValues = {
+    invoiceNo: countInvoices,
     name: '',
     email: '',
     telephone: '',
@@ -21,6 +33,7 @@ const AddInvoices = () => {
   };
   const yupObject = object({
     name: string().required('name is required'),
+    invoiceNo: number().required('invoice is required'),
     // address: string().required('address is required'),
     // email: string().email().required('email is required'),
     // telephone: string().required('telephone is required'),
@@ -35,23 +48,25 @@ const AddInvoices = () => {
     //   .min(1, 'At least one item is required'),
   });
   const handleSubmit = async (values) => {
-    const { name, address, telephone, email } = values;
+    const { name, address, telephone, email, invoiceNo } = values;
 
     const data = {
       name,
       email,
       address,
       telephone,
+      invoiceNo,
     };
-    console.log(data, 'the data ============>');
     await dispatch(addInvoices(data));
   };
+  console.log(defaultValues, 'the values default ============>');
   return (
     <MiniDrawer>
       <Formik
         initialValues={defaultValues}
         onSubmit={handleSubmit}
         validationSchema={yupObject}
+        enableReinitialize
       >
         {(formik) => <InvoiceForm formik={formik} />}
       </Formik>
