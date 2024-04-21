@@ -36,15 +36,16 @@ const AddInvoices = () => {
     //   .min(1, 'At least one item is required'),
   });
   const handleSubmit = (values) => {
-    const { name, address, telephone, email } = values;
-
-    const addInvoiceData = {
-      name,
-      email,
-      address,
-      telephone,
-    };
-    dispatch(addInvoiceActionCreator(addInvoiceData));
+    console.log(values, 'the values ===========>');
+    // const { name, address, telephone, email } = values;
+    //
+    // const data = {
+    //   name,
+    //   email,
+    //   address,
+    //   telephone,
+    // };
+    // dispatch(addInvoices(data));
   };
   return (
     <MiniDrawer>
@@ -55,7 +56,6 @@ const AddInvoices = () => {
       >
         {(formik) => <InvoiceForm formik={formik} />}
       </Formik>
-      <InvoiceForm />
     </MiniDrawer>
   );
 };
