@@ -3,7 +3,13 @@ import { Button } from '../../elements/button';
 import { COLORS } from '../../style/theme';
 import { useState, useEffect } from 'react';
 
-const PaymentDetails = ({ values, handleChange }) => {
+const PaymentDetails = ({
+  values,
+  handleChange,
+  touched,
+  errors,
+  setFieldValue,
+}) => {
   const [priceValues, setPriceValues] = useState({
     subTotal: 0,
     tax: 0,
@@ -19,7 +25,10 @@ const PaymentDetails = ({ values, handleChange }) => {
     const total = subTotal + tax;
 
     setPriceValues({ subTotal, tax, total });
-  }, [values.items]);
+    setFieldValue('subTotal', subTotal);
+    setFieldValue('tax', tax);
+    setFieldValue('total', total);
+  }, [values.items, setFieldValue]);
 
   console.log(values.items, 'the values =====>');
   return (
@@ -51,6 +60,8 @@ const PaymentDetails = ({ values, handleChange }) => {
             name="subTotal"
             value={priceValues.subTotal}
             onChange={handleChange}
+            error={touched.subTotal && Boolean(errors.subTotal)}
+            helperText={touched.subTotal && errors.subTotal}
             InputProps={{
               disableUnderline: true,
             }}
@@ -73,6 +84,8 @@ const PaymentDetails = ({ values, handleChange }) => {
             name="tax"
             value={priceValues.tax}
             onChange={handleChange}
+            error={touched.tax && Boolean(errors.tax)}
+            helperText={touched.tax && errors.tax}
             placeholder="$0.18"
             variant="standard"
             InputProps={{
@@ -109,6 +122,8 @@ const PaymentDetails = ({ values, handleChange }) => {
             name="total"
             value={priceValues.total}
             onChange={handleChange}
+            error={touched.total && Boolean(errors.total)}
+            helperText={touched.total && errors.total}
             InputProps={{
               disableUnderline: true,
             }}
@@ -136,6 +151,11 @@ const PaymentDetails = ({ values, handleChange }) => {
             <TextField
               placeholder="standard chartered Bank"
               variant="standard"
+              name="bankName"
+              onChange={handleChange}
+              value={values.bankName}
+              error={touched.bankName && Boolean(errors.bankName)}
+              helperText={touched.bankName && errors.bankName}
               InputProps={{
                 disableUnderline: true,
               }}
@@ -152,11 +172,16 @@ const PaymentDetails = ({ values, handleChange }) => {
             }}
           >
             <Typography variant="body1" style={{ marginRight: 8 }}>
-              Account No:
+              Account Number:
             </Typography>
             <TextField
               placeholder="01235689000"
+              name="accountNo"
               variant="standard"
+              onChange={handleChange}
+              value={values.accountNo}
+              error={touched.accountNo && Boolean(errors.accountNo)}
+              helperText={touched.accountNo && errors.accountNo}
               InputProps={{
                 disableUnderline: true,
               }}
@@ -177,35 +202,19 @@ const PaymentDetails = ({ values, handleChange }) => {
             </Typography>
             <TextField
               placeholder="John Doe"
+              name="accountName"
               variant="standard"
+              value={values.accountName}
+              onChange={handleChange}
+              error={touched.accountName && Boolean(errors.accountName)}
+              helperText={touched.accountName && errors.accountName}
               InputProps={{
                 disableUnderline: true,
               }}
               style={{ flex: 1 }}
             />
           </Box>
-          <Box
-            style={{
-              alignSelf: 'flex-start',
-              marginBottom: 8,
-              width: 300,
-              display: 'flex',
-              alignItems: 'center',
-            }}
-          >
-            <Typography variant="body1" style={{ marginRight: 8 }}>
-              Branch Name:
-            </Typography>
-            <TextField
-              placeholder="xyz"
-              variant="standard"
-              InputProps={{
-                disableUnderline: true,
-              }}
-              style={{ flex: 1 }}
-            />
-          </Box>
-          <Stack my={4} marginTop={-10}>
+          <Stack my={4} marginTop={5}>
             <Button
               type="submit"
               variant="text"

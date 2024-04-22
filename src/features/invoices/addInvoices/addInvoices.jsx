@@ -24,7 +24,6 @@ const AddInvoices = () => {
     name: '',
     email: '',
     telephone: '',
-    invoiceId: '',
     address: '',
     items: [
       {
@@ -38,6 +37,9 @@ const AddInvoices = () => {
     total: 0,
     dueDate: '',
     status: '',
+    bankName: '',
+    accountNo: '',
+    accountName: '',
     subtotal: 0,
     tax: 0,
   };
@@ -57,26 +59,17 @@ const AddInvoices = () => {
       .of(itemSchema)
       .required('Items are required')
       .min(1, 'At least one item is required'),
-    // address: string().required('address is required'),
-    // email: string().email().required('email is required'),
-    // telephone: string().required('telephone is required'),
-    // dueDate: string(),
-    // status: string(),
-    // amount: number()
-    //   .required('Amount is required')
-    //   .min(0, 'Amount must be greater than or equal to 0'),
+    address: string().required('address is required'),
+    email: string().email().required('email is required'),
+    telephone: string().required('telephone is required'),
+    dueDate: string().required('dueDate is required'),
+    total: number()
+      .required('Amount is required')
+      .min(0, 'Amount must be greater than or equal to 0'),
   });
   const handleSubmit = async (values) => {
-    const { name, address, telephone, email, invoiceNo } = values;
-
-    const data = {
-      name,
-      email,
-      address,
-      telephone,
-      invoiceNo,
-    };
-    await dispatch(addInvoices(data));
+    await dispatch(addInvoices(values));
+    await dispatch(getAllInvoices());
   };
 
   return (

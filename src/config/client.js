@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-export const baseURL =
-  'https://tracker-aid-backend-df9d6979d08f.herokuapp.com/api/v1';
+export const baseURL = 'https://tracker-aid-backend-df9d6979d08f.herokuapp.com/api/v1';
 
 export const instance = axios.create({
   baseURL,
