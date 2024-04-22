@@ -12,6 +12,7 @@ import TagIcon from '@mui/icons-material/Tag';
 import dayjs from 'dayjs';
 import TableForm from './tableForm';
 import PaymentDetails from './paymentDetails';
+import LogoImage from '../../assets/logo2.png';
 
 const InvoiceForm = ({ formik }) => {
   const { handleSubmit, values, handleChange, touched, errors, setFieldValue } =
@@ -31,6 +32,13 @@ const InvoiceForm = ({ formik }) => {
         minHeight: '100vh',
       }}
     >
+      <Box style={{ marginBottom: 20 }}>
+        <img
+          src={LogoImage}
+          alt="Logo"
+          style={{ width: 200, height: 'auto' }}
+        />
+      </Box>
       <Form
         onSubmit={handleSubmit}
         style={{
