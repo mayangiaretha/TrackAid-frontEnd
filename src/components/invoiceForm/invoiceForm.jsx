@@ -5,9 +5,11 @@ import {
   TextField,
   Stack,
   Box,
+  MenuItem,
 } from '@mui/material';
 import { Form } from 'formik';
 import TagIcon from '@mui/icons-material/Tag';
+import dayjs from 'dayjs';
 import TableForm from './tableForm';
 import PaymentDetails from './paymentDetails';
 
@@ -15,19 +17,28 @@ const InvoiceForm = ({ formik }) => {
   const { handleSubmit, values, handleChange, touched, errors, setFieldValue } =
     formik;
 
-  console.log(values.items, 'the items ======>');
+  console.log(errors, 'errors =====>');
+
+  console.log(values, 'the get values values ==========>');
+
   return (
     <Container
       style={{
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'flex-end',
-        height: 'auto',
+        alignItems: 'center',
+        justifyContent: 'center',
+        minHeight: '100vh',
       }}
     >
       <Form
         onSubmit={handleSubmit}
-        style={{ width: '100%', display: 'flex', flexDirection: 'column' }}
+        style={{
+          width: '100%',
+          height: 'auto',
+          display: 'flex',
+          flexDirection: 'column',
+        }}
       >
         <Box style={{ alignSelf: 'flex-end', marginBottom: 8 }}>
           <Typography variant="h1" component="strong">
@@ -65,13 +76,19 @@ const InvoiceForm = ({ formik }) => {
           }}
         >
           <Typography variant="body1" style={{ marginRight: 8 }}>
-            Invoice Date:
+            Date:
           </Typography>
           <TextField
             placeholder="Enter date"
             variant="standard"
+            name="date"
+            value={dayjs().format('YYYY-MM-DD')}
+            onChange={handleChange}
+            error={touched.date && Boolean(errors.date)}
+            helperText={touched.date && errors.date}
+            disabled
             InputProps={{
-              disableUnderline: true, // This removes the underline
+              disableUnderline: true,
             }}
             style={{ flex: 1 }}
           />
@@ -89,26 +106,59 @@ const InvoiceForm = ({ formik }) => {
             Due Date:
           </Typography>
           <TextField
-            placeholder="Enter date"
+            placeholder="due date"
             variant="standard"
+            name="dueDate"
+            value={values.dueDate}
+            onChange={handleChange}
+            error={touched.dueDate && Boolean(errors.dueDate)}
+            helperText={touched.dueDate && errors.dueDate}
             InputProps={{
               disableUnderline: true,
             }}
             style={{ flex: 1 }}
           />
         </Box>
+        <Box
+          style={{
+            alignSelf: 'flex-end',
+            marginBottom: 8,
+            width: 300,
+            display: 'flex',
+            alignItems: 'center',
+          }}
+        >
+          <Typography variant="body1" style={{ marginRight: 8 }}>
+            Status:
+          </Typography>
+          <TextField
+            select
+            variant="standard"
+            name="status"
+            value={values.status}
+            onChange={handleChange}
+            error={touched.status && Boolean(errors.status)}
+            helperText={touched.status && errors.status}
+            InputProps={{
+              disableUnderline: true,
+            }}
+            style={{ flex: 1 }}
+          >
+            <MenuItem value="paid">Paid</MenuItem>
+            <MenuItem value="pending">Pending</MenuItem>
+          </TextField>
+        </Box>
         <Box style={{ alignSelf: 'flex-start', marginTop: -180 }}>
           {' '}
           <Typography variant="h3" style={{ marginBottom: 8 }}>
             INVOICE TO:
           </Typography>
-          {/* New parent container */}
           <Stack alignItems="center" direction="row" mb={2}>
             <Typography variant="body1" style={{ marginRight: 8 }}>
               Name:
             </Typography>
             <TextField
-              placeholder="Enter Client's Name"
+              placeholder="Enter Company Name"
               name="name"
               variant="standard"
               value={values.name}
@@ -122,11 +172,16 @@ const InvoiceForm = ({ formik }) => {
           </Stack>
           <Stack alignItems="center" direction="row" mb={2}>
             <Typography variant="body1" style={{ marginRight: 8 }}>
-              Company:
+              Address:
             </Typography>
             <TextField
-              placeholder="Company Name"
+              placeholder="Company Address"
+              name="address"
               variant="standard"
+              value={values.address}
+              onChange={handleChange}
+              error={touched.address && Boolean(errors.address)}
+              helperText={touched.address && errors.address}
               InputProps={{
                 disableUnderline: true,
               }}
@@ -142,10 +197,15 @@ const InvoiceForm = ({ formik }) => {
             }}
           >
             <Typography variant="body1" style={{ marginRight: 8 }}>
-              Phone:
+              telephone:
             </Typography>
             <TextField
               placeholder="Phone Number"
+              name="telephone"
+              onChange={handleChange}
+              value={values.telephone}
+              error={touched.telephone && Boolean(errors.telephone)}
+              helperText={touched.telephone && errors.telephone}
               variant="standard"
               InputProps={{
                 disableUnderline: true,
@@ -167,6 +227,11 @@ const InvoiceForm = ({ formik }) => {
             </Typography>
             <TextField
               placeholder="Email Address"
+              name="email"
+              onChange={handleChange}
+              value={values.email}
+              error={touched.email && Boolean(errors.email)}
+              helperText={touched.email && errors.email}
               variant="standard"
               InputProps={{
                 disableUnderline: true,
@@ -184,7 +249,13 @@ const InvoiceForm = ({ formik }) => {
             setFieldValue={setFieldValue}
           />
         </Container>
-        <PaymentDetails values={values} handleChange={handleChange} />
+        <PaymentDetails
+          values={values}
+          handleChange={handleChange}
+          errors={errors}
+          touched={touched}
+          setFieldValue={setFieldValue}
+        />
       </Form>
     </Container>
   );
