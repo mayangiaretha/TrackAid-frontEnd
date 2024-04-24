@@ -7,6 +7,7 @@ import {
   TableCell,
   Stack,
   TableBody,
+  Container,
   Typography,
 } from '@mui/material';
 import LogoImage from '../../../assets/logo2.png';
@@ -24,6 +25,10 @@ export const Invoice = ({ foundInvoice }) => {
     telephone,
     name,
     accountNo,
+    accountName,
+    subtotal,
+    tax,
+    total,
     bankName,
   } = foundInvoice;
 
@@ -44,20 +49,6 @@ export const Invoice = ({ foundInvoice }) => {
         />
       </Box>
 
-      <Box
-        style={{
-          alignSelf: 'flex-end',
-          marginBottom: 8,
-          width: 300,
-          display: 'flex',
-          alignItems: 'center',
-        }}
-      >
-        <Typography variant="body1" style={{ marginRight: 8 }}>
-          Due Date:
-        </Typography>
-        <Typography variant="standard">{dueDate}</Typography>
-      </Box>
       <Box
         style={{
           alignSelf: 'flex-end',
@@ -143,12 +134,10 @@ export const Invoice = ({ foundInvoice }) => {
           <Typography variant="standard">{email}</Typography>
         </Box>
       </Box>
-      <TableContainer sx={{ width: '100%' }}>
+      <TableContainer sx={{ width: '100%', marginTop: 10 }}>
         <Table style={{ minWidth: '100%' }}>
           <TableHead>
-            <TableRow
-              style={{ backgroundColor: COLORS.BLUE_1, marginBottom: 45 }}
-            >
+            <TableRow style={{ backgroundColor: COLORS.BLUE_1 }}>
               <TableCell>Product</TableCell>
               <TableCell>Description</TableCell>
               <TableCell>Quantity</TableCell>
@@ -181,16 +170,76 @@ export const Invoice = ({ foundInvoice }) => {
           </TableBody>
         </Table>
       </TableContainer>
-      <>
-        <Box style={{ alignSelf: 'flex-start' }}>
+      <Container
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'flex-end',
+          height: 'auto',
+        }}
+      >
+        <Box
+          style={{
+            alignSelf: 'flex-end',
+            marginBottom: 8,
+            width: 300,
+            display: 'flex',
+            alignItems: 'center',
+            marginTop: 30,
+          }}
+        >
+          <Typography variant="body1" style={{ marginRight: 8 }}>
+            subtotal:
+          </Typography>
+          <Typography variant="standard">{subtotal}</Typography>
+        </Box>
+        <Box
+          style={{
+            alignSelf: 'flex-end',
+            marginBottom: 8,
+            width: 300,
+            display: 'flex',
+            alignItems: 'center',
+          }}
+        >
+          <Typography variant="body1" style={{ marginRight: 8 }}>
+            Tax(18%):
+          </Typography>
+          <Typography variant="standard">{tax}</Typography>
+        </Box>
+        <Box
+          style={{
+            alignSelf: 'flex-end',
+            marginBottom: 15,
+            width: 300,
+            display: 'flex',
+            alignItems: 'center',
+            position: 'relative',
+          }}
+        >
+          <Box
+            style={{
+              position: 'absolute',
+              width: '100%',
+              borderTop: '2px solid #03a9fc',
+              marginTop: '-40px',
+            }}
+          />
+          <Typography variant="body1" style={{ marginRight: 8 }}>
+            Total:
+          </Typography>
+          <Typography variant="standard">{total}</Typography>
+        </Box>
+
+        <Box style={{ alignSelf: 'flex-start', marginTop: -100 }}>
           {' '}
-          <Typography variant="h3" style={{ marginBottom: 8 }}>
+          <Typography variant="h3" style={{ marginTop: 8 }}>
             Payment method:
           </Typography>
           <Box
             style={{
               alignSelf: 'flex-start',
-              marginBottom: 8,
+              marginTop: 10,
               width: 300,
               display: 'flex',
               alignItems: 'center',
@@ -204,7 +253,7 @@ export const Invoice = ({ foundInvoice }) => {
           <Box
             style={{
               alignSelf: 'flex-start',
-              marginBottom: 8,
+              marginTop: 10,
               width: 300,
               display: 'flex',
               alignItems: 'center',
@@ -216,7 +265,21 @@ export const Invoice = ({ foundInvoice }) => {
             <Typography variant="standard">{bankName}</Typography>
           </Box>
         </Box>
-      </>
+        <Box
+          style={{
+            alignSelf: 'flex-start',
+            marginTop: 10,
+            width: 300,
+            display: 'flex',
+            alignItems: 'center',
+          }}
+        >
+          <Typography variant="body1" style={{ marginRight: 8 }}>
+            Account Name:
+          </Typography>
+          <Typography variant="standard">{accountName}</Typography>
+        </Box>
+      </Container>
     </container>
   );
 };

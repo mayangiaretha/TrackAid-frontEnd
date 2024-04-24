@@ -65,6 +65,9 @@ const AddInvoices = () => {
     email: string().email().required('email is required'),
     telephone: string().required('telephone is required'),
     dueDate: string().required('dueDate is required'),
+    accountNo: number().required('account Number is required'),
+    accountName: string().required('Account Name is required'),
+    bankName: string().required('Bank Name is required'),
     total: number()
       .required('Amount is required')
       .min(0, 'Amount must be greater than or equal to 0'),
