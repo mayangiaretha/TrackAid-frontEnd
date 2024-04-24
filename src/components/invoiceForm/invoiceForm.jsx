@@ -18,10 +18,6 @@ const InvoiceForm = ({ formik }) => {
   const { handleSubmit, values, handleChange, touched, errors, setFieldValue } =
     formik;
 
-  console.log(errors, 'errors =====>');
-
-  console.log(values, 'the get values values ==========>');
-
   return (
     <Container
       style={{

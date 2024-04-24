@@ -29,6 +29,7 @@ module.exports = {
   rules: {
     // Existing rules...
     'react/prop-types': 'off', // Disable prop-types rule
+    'react/no-unescaped-entities': 'off',
   },
 
   overrides: [

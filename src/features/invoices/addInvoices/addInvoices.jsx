@@ -19,6 +19,8 @@ const AddInvoices = () => {
     setCountInvoices(invoices.length + 1);
   }, [invoices]);
 
+  console.log(countInvoices, 'the invoices =====>');
+
   const defaultValues = {
     invoiceNo: countInvoices,
     name: '',
@@ -68,6 +70,7 @@ const AddInvoices = () => {
       .min(0, 'Amount must be greater than or equal to 0'),
   });
   const handleSubmit = async (values) => {
+    console.log(values, 'the values ==========>');
     await dispatch(addInvoices(values));
     await dispatch(getAllInvoices());
   };
