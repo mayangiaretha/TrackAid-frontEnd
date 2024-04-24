@@ -1,4 +1,4 @@
-import {Container, Grid, Stack, Typography } from '@mui/material';
+import { Container, Grid, Stack, Typography } from '@mui/material';
 import { Form } from 'formik';
 import { Link } from 'react-router-dom';
 
@@ -6,17 +6,25 @@ import { Button } from '../../elements/button';
 import { TextField } from '../../elements/textfield';
 import { COLORS } from '../../style/theme';
 
-const FormLink = ({login}) => {
-  const message = login ? 'Don\'t have an account?' : 'Already have an account?'
+const FormLink = ({ login }) => {
+  const message = login ? "Don't have an account?" : 'Already have an account?';
   return (
-      <Stack direction="row" alignItems="center" width="100%" justifyContent="center" mt={4}>
-        <Typography>{message}</Typography>
-        <Link to={login? "/register" : "/"}>
-          <Typography sx={{color: `${COLORS.BLUE}`}}>&nbsp;{login ? 'Register' : 'Login'}</Typography>
-        </Link>
-      </Stack>
-  )
-}
+    <Stack
+      direction="row"
+      alignItems="center"
+      width="100%"
+      justifyContent="center"
+      mt={4}
+    >
+      <Typography>{message}</Typography>
+      <Link to={login ? '/register' : '/'}>
+        <Typography sx={{ color: `${COLORS.BLUE}` }}>
+          &nbsp;{login ? 'Register' : 'Login'}
+        </Typography>
+      </Link>
+    </Stack>
+  );
+};
 
 const RegistrationForm = ({ formik, login }) => {
   const { handleSubmit, handleChange, values, touched, errors } = formik;
@@ -96,13 +104,13 @@ const RegistrationForm = ({ formik, login }) => {
             >
               <Button type="submit" variant="text" fullWidth>
                 {' '}
-                  {login ? 'Login' : 'Create an account'}
+                {login ? 'Login' : 'Create an account'}
               </Button>
             </Stack>
           </Grid>
         </Grid>
       </Form>
-      <FormLink login={login}/>
+      <FormLink login={login} />
     </Container>
   );
 };

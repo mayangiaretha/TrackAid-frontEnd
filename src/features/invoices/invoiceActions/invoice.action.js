@@ -27,7 +27,6 @@ export const addInvoices = (data) => async (dispatch) => {
 };
 
 export const getAnInvoice = (invoiceId) => (dispatch) => {
-  console.log(invoiceId, 'the id in axios =============>');
   instance
     .get(`invoices/${invoiceId}`)
     .then((res) => {
