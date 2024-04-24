@@ -13,6 +13,7 @@ import {
 import LogoImage from '../../../assets/logo2.png';
 import dayjs from 'dayjs';
 import { COLORS } from '../../../style/theme';
+import {Button} from "../../../elements/button";
 
 export const Invoice = ({ foundInvoice }) => {
   const {
@@ -39,6 +40,7 @@ export const Invoice = ({ foundInvoice }) => {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
+          marginTop:20,
       }}
     >
       <Box style={{ marginBottom: 20 }}>
@@ -230,8 +232,31 @@ export const Invoice = ({ foundInvoice }) => {
           </Typography>
           <Typography variant="standard">{total}</Typography>
         </Box>
+          <Box
+              style={{
+                  alignSelf: 'flex-end',
+                  marginBottom: 8,
+                  width: 300,
+                  display: 'flex',
+                  alignItems: 'center',
+              }}
+          >
+              <Stack my={4} marginTop={5}>
+                  <Button
+                      type="submit"
+                      variant="text"
+                      sx={{
+                          width: '10rem',
+                          backgroundColor: COLORS.BLUE_1,
+                          color: 'white',
+                      }}
+                  >
+                      send invoice
+                  </Button>
+              </Stack>
+          </Box>
 
-        <Box style={{ alignSelf: 'flex-start', marginTop: -100 }}>
+        <Box style={{ alignSelf: 'flex-start', marginTop: -200 }}>
           {' '}
           <Typography variant="h3" style={{ marginTop: 8 }}>
             Payment method:
