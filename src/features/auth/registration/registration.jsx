@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 
-import { Alert } from '@mui/material';
 import { Formik } from 'formik';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -12,16 +11,19 @@ import {
   StyledFormContainer,
 } from '../../../elements/Containers/Containers.styles';
 import { registerUser } from '../authActions/auth.actions';
+import MuiSnackBar from "../../../components/Snackbar/Snakbar";
 
 const Registration = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const authState = useSelector((state) => state?.authentication);
   const [error, setError] = useState('');
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     if (authState.error) {
       setError(authState.error);
+      setOpen(true);
     }
     if (authState.isAuthenticated) {
       navigate('/clients');
@@ -54,7 +56,12 @@ const Registration = () => {
   return (
     <StyledContainer maxWidth="1200px">
       {error.length > 0 && (
-        <Alert severity="error">This is an error Alert.</Alert>
+          <MuiSnackBar
+              open={open}
+              setError={setError}
+              setOpen={setOpen}
+              message="Wrong credentials please review your email and password"
+          />
       )}
       <StyledFormContainer>
         <Formik
