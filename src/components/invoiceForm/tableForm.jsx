@@ -12,6 +12,7 @@ import { COLORS } from '../../style/theme';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useEffect } from 'react';
+import { calculateTotal } from './invoice.utils';
 
 const TableForm = ({
   values,
@@ -34,33 +35,25 @@ const TableForm = ({
     setFieldValue('items', newItems);
   };
 
-  const calculateTotal = (index) => {
-    const item = values.items[index];
-    const quantity = parseFloat(item.quantity) || 0;
-    const unitPrice = parseFloat(item.unitPrice) || 0;
-    const total = quantity * unitPrice;
-    return isNaN(total) ? '' : total.toFixed(2);
-  };
-
   /**
    * Necessary to stop the calculated value from being one step behind
    */
   useEffect(() => {
     // Recalculate total for each item whenever values change
     values.items.forEach((item, index) => {
-      const total = calculateTotal(index);
+      const total = calculateTotal(values, index);
       setFieldValue(`items.${index}.total`, total);
     });
   }, [values.items, setFieldValue]);
 
   const handleUnitPriceChange = (index, value) => {
     setFieldValue(`items.${index}.unitPrice`, value);
-    setFieldValue(`items.${index}.total`, calculateTotal(index));
+    setFieldValue(`items.${index}.total`, calculateTotal(values, index));
   };
 
   const handleQuantityChange = (index, value) => {
     setFieldValue(`items.${index}.quantity`, value);
-    setFieldValue(`items.${index}.total`, calculateTotal(index));
+    setFieldValue(`items.${index}.total`, calculateTotal(values, index));
   };
 
   return (
@@ -192,7 +185,7 @@ const TableForm = ({
                   <TextField
                     name={`items.${index}.total`}
                     variant="standard"
-                    value={calculateTotal(index)}
+                    value={calculateTotal(values, index)}
                     onChange={handleChange}
                     disabled
                   />
@@ -203,7 +196,7 @@ const TableForm = ({
                       <AddIcon />
                     </IconButton>
                   ) : (
-                    <IconButton onClick={() => deleteItem(index)}>
+                    <IconButton onClick={() => deleteItem(values, index)}>
                       <DeleteIcon />
                     </IconButton>
                   )}

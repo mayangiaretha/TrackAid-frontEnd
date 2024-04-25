@@ -11,21 +11,21 @@ const PaymentDetails = ({
   setFieldValue,
 }) => {
   const [priceValues, setPriceValues] = useState({
-    subTotal: 0,
+    subtotal: 0,
     tax: 0,
     total: 0,
   });
 
   useEffect(() => {
-    const subTotal = values.items.reduce(
+    const subtotal = values.items.reduce(
       (acc, item) => acc + parseFloat(item.total),
       0,
     );
-    const tax = subTotal * 0.18;
-    const total = subTotal + tax;
+    const tax = subtotal * 0.18;
+    const total = subtotal + tax;
 
-    setPriceValues({ subTotal, tax, total });
-    setFieldValue('subTotal', subTotal);
+    setPriceValues({ subtotal, tax, total });
+    setFieldValue('subtotal', subtotal);
     setFieldValue('tax', tax);
     setFieldValue('total', total);
   }, [values.items, setFieldValue]);
@@ -52,16 +52,16 @@ const PaymentDetails = ({
           }}
         >
           <Typography variant="body1" style={{ marginRight: 8 }}>
-            subTotal:
+            subtotal:
           </Typography>
           <TextField
             placeholder="$"
             variant="standard"
-            name="subTotal"
-            value={priceValues.subTotal}
+            name="subtotal"
+            value={priceValues.subtotal}
             onChange={handleChange}
-            error={touched.subTotal && Boolean(errors.subTotal)}
-            helperText={touched.subTotal && errors.subTotal}
+            error={touched.subtotal && Boolean(errors.subtotal)}
+            helperText={touched.subtotal && errors.subtotal}
             InputProps={{
               disableUnderline: true,
             }}

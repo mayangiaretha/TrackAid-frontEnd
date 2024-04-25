@@ -12,7 +12,7 @@ export const getInvoicesAction = (payload) => ({
   payload,
 });
 
-export const getAClientAction = (payload) => ({
+export const getAnInvoiceAction = (payload) => ({
   type: invoiceActionTypes.GET_INVOICE,
   payload,
 });

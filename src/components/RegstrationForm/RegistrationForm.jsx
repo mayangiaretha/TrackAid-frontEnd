@@ -1,10 +1,30 @@
-import { Box, Container, Grid, Stack, Typography } from '@mui/material';
+import { Container, Grid, Stack, Typography } from '@mui/material';
 import { Form } from 'formik';
 import { Link } from 'react-router-dom';
 
 import { Button } from '../../elements/button';
 import { TextField } from '../../elements/textfield';
 import { COLORS } from '../../style/theme';
+
+const FormLink = ({ login }) => {
+  const message = login ? "Don't have an account?" : 'Already have an account?';
+  return (
+    <Stack
+      direction="row"
+      alignItems="center"
+      width="100%"
+      justifyContent="center"
+      mt={4}
+    >
+      <Typography>{message}</Typography>
+      <Link to={login ? '/register' : '/'}>
+        <Typography sx={{ color: `${COLORS.BLUE}` }}>
+          &nbsp;{login ? 'Register' : 'Login'}
+        </Typography>
+      </Link>
+    </Stack>
+  );
+};
 
 const RegistrationForm = ({ formik, login }) => {
   const { handleSubmit, handleChange, values, touched, errors } = formik;
@@ -18,24 +38,12 @@ const RegistrationForm = ({ formik, login }) => {
                 variant="h5"
                 sx={{ fontFamily: 'italic', fontSize: '24px' }}
               >
-                <strong>Sign in</strong>
+                <strong>Login</strong>
               </Typography>
-              <Stack direction="row">
-                <Typography variant="caption">
-                  New User?{' '}
-                  <Link to="/register">
-                    <Box sx={{ color: `${COLORS.BLUE}` }} component="span">
-                      <Typography variant="caption">
-                        Create an account
-                      </Typography>
-                    </Box>
-                  </Link>
-                </Typography>
-              </Stack>
             </Stack>
           ) : (
             <Stack direction="row" spacing={1} alignItems="flex-start" ml={10}>
-              <Typography variant="h4" spacing={1}>
+              <Typography variant="h1" spacing={1}>
                 Create an account
               </Typography>
             </Stack>
@@ -96,12 +104,13 @@ const RegistrationForm = ({ formik, login }) => {
             >
               <Button type="submit" variant="text" fullWidth>
                 {' '}
-                Submit{' '}
+                {login ? 'Login' : 'Create an account'}
               </Button>
             </Stack>
           </Grid>
         </Grid>
       </Form>
+      <FormLink login={login} />
     </Container>
   );
 };

@@ -1,9 +1,11 @@
 import { instance } from '../../../config/client';
 import {
   addInvoiceAction,
+  getAnInvoiceAction,
   getInvoicesAction,
   invoiceActionFailed,
 } from './invoice.types';
+
 export const getAllInvoices = () => (dispatch) => {
   instance
     .get('invoices')
@@ -22,4 +24,15 @@ export const addInvoices = (data) => async (dispatch) => {
   } catch (err) {
     dispatch(invoiceActionFailed(err.response.data));
   }
+};
+
+export const getAnInvoice = (invoiceId) => (dispatch) => {
+  instance
+    .get(`invoices/${invoiceId}`)
+    .then((res) => {
+      dispatch(getAnInvoiceAction(res.data));
+    })
+    .catch((err) => {
+      dispatch(invoiceActionFailed(err.response.data));
+    });
 };

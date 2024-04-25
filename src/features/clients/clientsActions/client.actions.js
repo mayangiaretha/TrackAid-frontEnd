@@ -35,8 +35,6 @@ export const editClient = (jsonData, clientId) => (dispatch) => {
 };
 
 export const getClient = (clientId) => (dispatch) => {
-  console.log(clientId, 'the id in axios =============>');
-
   instance
     .get(`clients/${clientId}`)
     .then((res) => {
