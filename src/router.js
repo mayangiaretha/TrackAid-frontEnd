@@ -8,15 +8,20 @@ import EditClients from './features/clients/editClients/editClients';
 import AddInvoices from './features/invoices/addInvoices/addInvoices';
 import ViewInvoices from './features/invoices/viewInvoices/viewInvoices';
 import ViewInvoice from './features/invoices/viewInvoice/viewInvoice';
+import Home from './features/home/home';
 
 const Routes = () =>
   useRoutes([
+    {
+      path: '/',
+      element: <Home />,
+    },
     {
       path: '/register',
       element: <Registration />,
     },
     {
-      path: '/',
+      path: '/login',
       element: <Login />,
     },
     {
