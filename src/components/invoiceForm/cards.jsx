@@ -1,13 +1,13 @@
 import { Stack, Card, CardContent, Typography } from '@mui/material';
 
 const CardsExample = ({ getInvoices }) => {
-  console.log(getInvoices, '===========================>');
   const totalPaid = getInvoices.filter(
-    (invoice) => invoice.invoiceStatus === 'Paid',
+    (invoice) => invoice.invoiceStatus === 'paid',
   ).length;
   const totalPending = getInvoices.filter(
-    (invoice) => invoice.invoiceStatus === 'Pending',
+    (invoice) => invoice.invoiceStatus === 'pending',
   ).length;
+
   const totalInvoices = getInvoices.length;
   return (
     <Stack
