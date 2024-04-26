@@ -17,7 +17,7 @@ const FormLink = ({ login }) => {
       mt={4}
     >
       <Typography>{message}</Typography>
-      <Link to={login ? '/register' : '/'}>
+      <Link to={login ? '/register' : '/login'}>
         <Typography sx={{ color: `${COLORS.BLUE}` }}>
           &nbsp;{login ? 'Register' : 'Login'}
         </Typography>

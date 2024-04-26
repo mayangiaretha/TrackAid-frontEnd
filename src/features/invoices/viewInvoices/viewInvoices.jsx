@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { InvoicesDataGrid } from './invoiceDataGrid';
 import { getAllInvoices } from '../invoiceActions/invoice.action';
 import { useDispatch, useSelector } from 'react-redux';
+import CardsExample from '../../../components/invoiceForm/cards';
 
 const ViewInvoices = () => {
   const [allInvoices, setAllInvoices] = useState([]);
@@ -28,7 +29,12 @@ const ViewInvoices = () => {
     }
   }, [invoices]);
 
-  return <InvoicesDataGrid getInvoices={allInvoices} />;
+  return (
+    <>
+      <CardsExample getInvoices={allInvoices} />
+      <InvoicesDataGrid getInvoices={allInvoices} />;
+    </>
+  );
 };
 
 export default ViewInvoices;

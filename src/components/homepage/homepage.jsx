@@ -145,6 +145,15 @@ const Homepage = ({ login }) => {
           <Typography variant="body1" align="center">
             &copy; {new Date().getFullYear()} Track Aid. All rights reserved.
           </Typography>
+          <Typography variant="body2" align="center">
+            Contact Us:
+          </Typography>
+          <Typography variant="body2" align="center">
+            Phone: +1234567890
+          </Typography>
+          <Typography variant="body2" align="center">
+            Email: info@trackaid.com
+          </Typography>
         </Container>
       </Box>
     </Box>

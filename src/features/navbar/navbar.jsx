@@ -60,7 +60,7 @@ function DrawerAppBar(props) {
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar component="nav">
-        <Toolbar>
+        <Toolbar sx={{ justifyContent: 'space-between' }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -70,13 +70,19 @@ function DrawerAppBar(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-          >
-            Track-Aid
-          </Typography>
+          <Link to="/">
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{
+                flexGrow: 1,
+                display: { xs: 'none', sm: 'block' },
+                cursor: 'pointer',
+              }}
+            >
+              Track-Aid
+            </Typography>
+          </Link>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
               <Link to={item === LOGIN ? '/login' : '/register'} key={item}>
