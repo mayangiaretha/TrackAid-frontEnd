@@ -11,7 +11,7 @@ import {
   StyledFormContainer,
 } from '../../../elements/Containers/Containers.styles';
 import { registerUser } from '../authActions/auth.actions';
-import MuiSnackBar from "../../../components/Snackbar/Snakbar";
+import MuiSnackBar from '../../../components/Snackbar/Snakbar';
 
 const Registration = () => {
   const navigate = useNavigate();
@@ -56,12 +56,12 @@ const Registration = () => {
   return (
     <StyledContainer maxWidth="1200px">
       {error.length > 0 && (
-          <MuiSnackBar
-              open={open}
-              setError={setError}
-              setOpen={setOpen}
-              message="Wrong credentials please review your email and password"
-          />
+        <MuiSnackBar
+          open={open}
+          setError={setError}
+          setOpen={setOpen}
+          message="Wrong credentials please review your email and password"
+        />
       )}
       <StyledFormContainer>
         <Formik

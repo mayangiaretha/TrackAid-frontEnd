@@ -75,11 +75,11 @@ function DrawerAppBar(props) {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
-            Tracker-Aid
+            Track-Aid
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
-              <Link to={item === LOGIN ? '/' : '/register'} key={item}>
+              <Link to={item === LOGIN ? '/login' : '/register'} key={item}>
                 <Button sx={{ color: '#fff' }}>{item}</Button>
               </Link>
             ))}
