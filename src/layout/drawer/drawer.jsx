@@ -142,7 +142,7 @@ export default function MiniDrawer({ children }) {
             sx={{ width: '100%' }}
           >
             <Typography variant="h6" noWrap component="div">
-              Tracker-Aid
+              Track-Aid
             </Typography>
             <Box>
               <Avatar

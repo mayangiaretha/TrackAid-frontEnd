@@ -3,7 +3,7 @@ import DataGrid from '../../../components/DataGrid/DataGrid';
 import { Container, IconButton, Stack } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { Button } from '../../../elements/button';
-import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 const columns = [
   { field: 'id', headerName: 'ID', width: 0 },
@@ -48,7 +48,7 @@ const columns = [
         <Stack justifyContent="space-evenly" direction="row">
           <IconButton>
             <Link to={`/invoices/${params.id}`}>
-              <RemoveRedEyeIcon />
+              <MoreVertIcon />
             </Link>
           </IconButton>
         </Stack>

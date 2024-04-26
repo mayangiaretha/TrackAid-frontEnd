@@ -256,7 +256,12 @@ export const Invoice = ({ foundInvoice }) => {
           </Stack>
         </Box>
 
-        <Box style={{ alignSelf: 'flex-start', marginTop: -200 }}>
+        <Box
+          style={{
+            alignSelf: 'flex-start',
+            marginTop: -200,
+          }}
+        >
           {' '}
           <Typography variant="h3" style={{ marginTop: 8 }}>
             Payment method:
